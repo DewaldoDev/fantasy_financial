@@ -9,6 +9,17 @@ class OwnedStocksController < ApplicationController
     @owned_stock = OwnedStock.new
   end
   def create
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @owned_stock = @portfolio.owned_stocks.new
+    # Will be either below or base_stock.ticker
+    @owned_stock.base_stock = BaseStock.where(ticker: params[:base_stock_ticker])
+    if @owned_stock.save
+      flash[:notice] = "Your order has been executed"
+      redirect_to portfolio_path(@portfolio)
+    else
+      flash[:warning] = "Your order has not been executed. Please try again"
+      render portfolio_owned_stock_path(@owned_stock)
+    end
   end
   def edit
   end

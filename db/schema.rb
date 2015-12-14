@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 20151214021153) do
   create_table "base_stocks", force: :cascade do |t|
     t.string   "ticker"
     t.string   "name"
-    t.float    "current_price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "current_market_price"
+    t.float    "current_bid_price"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "groups", force: :cascade do |t|

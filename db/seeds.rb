@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-BaseStock.seed_stocks_from_file("./lib/tickers3000.txt")
+BaseStock.seed_stocks_from_file("./lib/tickersNASDAQ.txt")

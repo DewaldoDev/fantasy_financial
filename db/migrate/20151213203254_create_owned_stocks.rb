@@ -5,6 +5,7 @@ class CreateOwnedStocks < ActiveRecord::Migration
       t.integer :quantity
       t.datetime :buy_date
       t.integer :portfolio_id
+      t.integer :base_stock_id
 
       t.timestamps null: false
     end

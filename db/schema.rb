@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213191012) do
+ActiveRecord::Schema.define(version: 20151214021153) do
+
+  create_table "base_stocks", force: :cascade do |t|
+    t.string   "ticker"
+    t.string   "name"
+    t.float    "current_price"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +36,16 @@ ActiveRecord::Schema.define(version: 20151213191012) do
     t.float    "return_amount"
     t.datetime "trade_time"
     t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "owned_stocks", force: :cascade do |t|
+    t.float    "buy_price"
+    t.integer  "quantity"
+    t.datetime "buy_date"
+    t.integer  "portfolio_id"
+    t.integer  "base_stock_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

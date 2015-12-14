@@ -34,7 +34,15 @@ class BaseStock < ActiveRecord::Base
 	end
 
 	def self.update_prices
-		tickers = BaseStock.all.map{:ticker}
+		stocks = BaseStock.all
+		data = fetch_stock_data(stocks.map(&:ticker), [:last_trade_price_only, :bid])
+
+		stocks.each do |stock|
+			t = stock.ticker
+			stock.current_market_price = data[t][:last_trade_price_only]
+			stock.current_bid_price = data[t][:bid]
+			stock.save
+		end
 	end
 
 	private_class_method :read_tickers_from_file, :fetch_stock_data

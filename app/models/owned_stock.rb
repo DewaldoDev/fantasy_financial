@@ -10,7 +10,11 @@ class OwnedStock < ActiveRecord::Base
 		self.base_stock.name
 	end
 
-	def current_price
-		self.base_stock.current_price
+	def current_market_price
+		self.base_stock.current_market_price
+	end
+
+	def current_bid_price
+		self.base_stock.current_bid_price
 	end
 end

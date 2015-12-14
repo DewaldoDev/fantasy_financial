@@ -1,25 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 BaseStock.seed_stocks_from_file("./lib/tickersNASDAQ.txt")
 
-k_michael = User.create(
+User.create(
 	username: "kmichaelkills",
 	first_name: "Krombopulos",
 	last_name: "Michael",
 	email: "kmichaelkills@gmail.com")
 
-r_sanchez = User.create(
+User.create(
 	username: "wubbalubbadub",
 	first_name: "Rick",
 	last_name: "Sanchez",
 	email: "r_sanchez@gmail.com")
 
-m_smith = User.create(
+User.create(
 	username: "the_one_true_morty",
 	first_name: "Morty",
 	last_name: "Smith",
@@ -35,10 +29,10 @@ squanch_group = Group.create(
 
 User.all.each do |user|
 	user.participations.create(
-		group_id: Group.all.first.id)
+		group_id: squanch_group.id)
 
 	user.portfolios.create(
-		group_id: Group.all.first.id)
+		group_id: squanch_group.id)
 end
 
 

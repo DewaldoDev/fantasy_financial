@@ -49,3 +49,6 @@ end
 
 # For grabbing stock data
 gem 'yahoo_finance_lib'
+
+#For formatting and validating dateTimes
+gem 'validates_timeliness'

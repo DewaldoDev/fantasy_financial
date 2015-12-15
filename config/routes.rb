@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :portfolios do
-    resources :owned_stocks
+    resources :stocks, controller: 'owned_stocks'
   end
 
   resources :users

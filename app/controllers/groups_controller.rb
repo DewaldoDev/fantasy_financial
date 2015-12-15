@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
   end
 
   private
-  def find_owned_stock
+  def find_group
     @group = Group.find(params[:id])
   end
 

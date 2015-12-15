@@ -1,0 +1,17 @@
+
+<%= @portfolio.user.username%>
+<%= @portfolio.group.name%>
+
+<% if @portfolio.owned_stocks.present? %>
+	<% @portfolio.owned_stocks.each do |stock| %>
+		<%= stock.portfolio.ticker %>
+		<%= stock.portfolio.name %>
+		<%= stock.portfolio.buy_price %>
+		<%= stock.portfolio.buy_date %>
+		<%= stock.portfolio.quantity %>
+	<% end %>
+ <% else %>
+    <p>"These are not the stocks you are looking for."</p>
+<% end %>
+
+<%= @portfolio.current_value %>

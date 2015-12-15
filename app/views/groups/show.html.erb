@@ -1,0 +1,13 @@
+
+<h1><%= @group.name %></h1>
+
+<% @group.users.each do |user| %>
+  <div>
+	  <%= link_to user.username, user_path(user) %>
+		<%= user.portfolios.where(group_id: @group.id).take.current_value %>
+  </div>
+<% end %>
+
+<div>
+	<%= @group.end_date %>
+</div>

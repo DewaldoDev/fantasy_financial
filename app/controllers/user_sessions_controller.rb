@@ -14,4 +14,10 @@ class UserSessionsController < ApplicationController
     logout
     flash['']
   end
+
+  private
+
+  def user_params
+    params.require(:user).permite(:email, :password, :password_confirmation)
+  end
 end

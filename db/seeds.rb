@@ -1,5 +1,5 @@
 
-BaseStock.seed_stocks_from_file("./lib/tickersNASDAQ.txt")
+BaseStock.seed_stocks_from_file("./public/tickersNASDAQ.txt")
 
 User.create(
 	username: "kmichaelkills",

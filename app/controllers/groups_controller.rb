@@ -13,7 +13,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(group_params)
+    #current_user method needs to be implemented!
+    @participation = current_user.participations.create
+    @group = @participation.group.new(group_params)
 
     if @group.save
 

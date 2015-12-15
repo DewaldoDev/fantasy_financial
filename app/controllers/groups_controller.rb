@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:show, :edit, :update, :create, :destroy]
+  before_action :find_group, only: [:show, :edit, :update, :destroy]
 
   def index
     @groups = Group.all
@@ -13,6 +13,13 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.new(group_params)
+
+    if @group.save
+
+    else
+
+    end
   end
 
   def edit
@@ -30,6 +37,6 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-
+    params.require(:group).permit(:name, :start_date, :end_date, :starting_total, :max_size)
   end
 end

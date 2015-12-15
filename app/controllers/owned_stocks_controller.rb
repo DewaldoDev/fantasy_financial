@@ -1,5 +1,5 @@
 class OwnedStocksController < ApplicationController
-  before_action :find_owned_stock, only: [:show, :edit, :update, :create, :destroy]
+  before_action :find_owned_stock, only: [:show, :edit, :update, :destroy]
 
   def index
     @owned_stocks = OwnedStock.all

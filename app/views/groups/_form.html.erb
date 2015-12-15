@@ -10,3 +10,24 @@
       </ul>
     </div>
     <% end %>
+
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :starting_total %>
+      <%= f.number_field :starting_total %>
+    </div>
+    <div class="field">
+      <%= f.label :max_size %>
+      <%= f.number_field :max_size %>
+    </div>
+    <div class="field">
+      <%= f.label :end_date %>
+      <%= f.datetime_select :end_date %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

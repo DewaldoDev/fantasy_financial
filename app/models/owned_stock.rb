@@ -5,6 +5,12 @@ class OwnedStock < ActiveRecord::Base
 	validates :buy_price, :quantity, :buy_date, :portfolio_id, :base_stock_id, presence: true
 	validates :buy_price, :quantity, numericality: {greater_than: 0}
 
+	before_validation :set_buy_date, on: [:create]
+
+	def set_buy_date
+		self.buy_date = Time.now
+	end
+
 	def ticker
 		self.base_stock.ticker
 	end

@@ -7,4 +7,10 @@ class Group < ActiveRecord::Base
 	validates :name, uniqueness: true
 	validates :starting_total, :max_size, numericality: {greater_than: 0}
 	validates_datetime :end_date, after: :start_date
+
+	before_validation :set_start_date, on: [:create]
+
+	def set_start_date
+		self.start_date = Time.now
+	end
 end

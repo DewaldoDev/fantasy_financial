@@ -5,6 +5,6 @@ module DateHelper
 	end
 
 	def print_date(date=Time.now)
-
+		date.strftime("%A %B %e, %Y at %H:%M")
 	end
 end

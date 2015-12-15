@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :groups
-
+  resources :stocks, controller: 'base_stocks'
 
 end

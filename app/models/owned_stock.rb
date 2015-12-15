@@ -3,7 +3,7 @@ class OwnedStock < ActiveRecord::Base
 	belongs_to :base_stock
 
 	validates :buy_price, :quantity, :buy_date, :portfolio_id, :base_stock_id, presence: true
-	validates :buy_price, :quantity, numericality {greater_than: 0}
+	validates :buy_price, :quantity, numericality: {greater_than: 0}
 
 	def ticker
 		self.base_stock.ticker

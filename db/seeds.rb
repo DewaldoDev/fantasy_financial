@@ -34,6 +34,7 @@ User.all.each do |user|
 	user.portfolios.create(
 		group_id: squanch_group.id,
 		cash: squanch_group.starting_total)
+
 end
 
 

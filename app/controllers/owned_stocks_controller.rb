@@ -23,6 +23,8 @@ class OwnedStocksController < ApplicationController
       redirect_to portfolio_path(@portfolio)
     else
       flash[:warning] = "Your order has not been executed. Please try again"
+      #This won't work, re-render a form page instead
+      #Need to reference another directory if you want to show the BaseStock show page
       render portfolio_owned_stock_path(@owned_stock)
     end
   end

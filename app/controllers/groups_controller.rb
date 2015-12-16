@@ -13,14 +13,16 @@ class GroupsController < ApplicationController
   end
 
   def create
-    #current_user method needs to be implemented!
     @participation = current_user.participations.create
-    @group = @participation.group.new(group_params)
+    @group = Group.new(group_params)
+    @group.participations << @participation
 
     if @group.save
-
+      flash[:notice] = "Your group has been created"
+      redirect_to group_path(@group)
     else
-
+      flash[:warning] = "Could not create group"
+      render 'new'
     end
   end
 

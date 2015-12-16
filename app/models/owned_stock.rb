@@ -11,10 +11,8 @@ class OwnedStock < ActiveRecord::Base
 
 	def must_have_sufficient_cash
 		total_cost = self.quantity * self.buy_price
-		if portfolio.cash >= total_cost
-
-		else
-
+		if portfolio.cash < total_cost
+			errors.add(:quantity, "Insufficient cash for stock purchase")
 		end
 	end
 

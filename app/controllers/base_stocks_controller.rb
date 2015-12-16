@@ -2,7 +2,16 @@ class BaseStocksController < ApplicationController
   before_action :find_base_stock, only: [:show, :edit, :update, :create, :destroy]
 
   def index
-    @base_stocks = BaseStock.all
+    if params[:ticker]
+      @base_stocks = BaseStock.where("LOWER(ticker) LIKE LOWER(?)", "%#{params[:ticker]}%")
+    else
+      @base_stocks = BaseStock.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

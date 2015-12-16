@@ -26,6 +26,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'sorcery'
 
+# For grabbing stock data
+gem 'yahoo_finance_lib'
+
+#For formatting and validating dateTimes
+gem 'validates_timeliness'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -46,9 +52,3 @@ group :development do
 
   gem 'pry-rails'
 end
-
-# For grabbing stock data
-gem 'yahoo_finance_lib'
-
-#For formatting and validating dateTimes
-gem 'validates_timeliness'

@@ -1,3 +1,11 @@
+<div id="stocks-search-bar">
+	<%= form_tag stocks_path, method: :get, remote: true, id:"search" do %>
+	<%= label_tag :ticker, "Ticker Search:" %>
+	<%= text_field_tag :ticker, params[:ticker] %>
+	<%= submit_tag 'Submit', :class => 'nav-button'  %>
+<% end %>
+</div>
+
 <div id="stock-list">
-<%= render @base_stocks %>
+	<%= render @base_stocks %>
 </div>

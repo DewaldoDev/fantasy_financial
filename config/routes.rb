@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+	root to: "users#home"
+
   resources :portfolios do
     resources :stocks, controller: 'owned_stocks'
   end

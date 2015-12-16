@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:index, :new, :create]
+  skip_before_action :require_login, only: [:home, :index, :new, :create]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
+
+  def home
+  end
 
   def index
   end
@@ -9,13 +12,17 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new(user_params)
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-    redirect_to(:users, notice: 'User was successfully created')
+      redirect_to(:root, notice: 'User was successfully created')
+    else
+      flash[:warning] = "Profile could not be created"
+      render 'new'
+    end
   end
 
   def edit
@@ -34,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :user_name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :username)
   end
 
   def find_user

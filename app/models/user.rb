@@ -12,4 +12,16 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, if: -> { new_record? || changes["password"] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes["password"] }
 
+  def stock_count(stock)
+  	stock_info = {}
+  	self.portfolios.each do |portfolio|
+  		group_name = portfolio.group.name
+  		stock = portfolio.owned_stocks.where(ticker: stock.ticker) if portfolio.owned_stocks.present?
+  		count = stock.quantity if stock.present?
+
+  		stock_info[group_name.parameterize.underscore.to_sym] = count if count.present?
+  	end
+  	stock_info
+  end
+
 end

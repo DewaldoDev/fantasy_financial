@@ -1,8 +1,19 @@
-<h1> Show page</h1>
+<h1><%= @base_stock.name %></h1>
 
 <div class="stock-show">
-	<%= @base_stock.ticker %>
-	<%= @base_stock.name %>
-	<%= @base_stock.current_market_price %>
-	<%= @base_stock.current_bid_price %>
+	<p>Ticker: <%= @base_stock.ticker %></p>
+	<p>Market Price: <%= @base_stock.current_market_price %></p>
+	<p>Bid Price: <%= @base_stock.current_bid_price %></p>
+</div>
+
+<div class="user-stock-show">
+	<p>No. of Stocks You Own: </p>
+</div>
+
+<div id="stocks-buy">
+	<%= form_tag stocks_path, method: :get, remote: true, id:"search" do %>
+		<%= label_tag :quantity, "Number of Stocks:" %>
+		<%= number_field_tag :quantity, params[:quantity] %>
+		<%= submit_tag 'Submit', :class => 'nav-button'  %>
+	<% end %>
 </div>

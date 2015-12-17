@@ -30,8 +30,11 @@ gem 'sorcery'
 # For grabbing stock data
 gem 'yahoo_finance_lib'
 
-#For formatting and validating dateTimes
+# For formatting and validating dateTimes
 gem 'validates_timeliness'
+
+# For scheduling background tasks
+gem 'whenever'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

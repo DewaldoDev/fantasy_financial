@@ -6,7 +6,7 @@ class OwnedStock < ActiveRecord::Base
 	validates :buy_price, :quantity, :buy_date, :portfolio_id, :base_stock_id, presence: true
 	validates :buy_price, :quantity, numericality: {greater_than: 0}
 
-	before_validation :set_buy_date, on: [:create]
+	before_validation :set_properties, on: [:create]
 
 
 	def must_have_sufficient_cash
@@ -16,7 +16,7 @@ class OwnedStock < ActiveRecord::Base
 		end
 	end
 
-	def set_buy_date
+	def set_properties
 		self.buy_date = Time.now
 	end
 

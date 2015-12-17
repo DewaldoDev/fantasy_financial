@@ -15,7 +15,6 @@ class OwnedStocksController < ApplicationController
   def create
     @portfolio = Portfolio.find(params[:portfolio_id])
     @owned_stock = @portfolio.owned_stocks.new(owned_stock_params)
-    # Will be either below or base_stock.ticker
     @owned_stock.base_stock = BaseStock.where(ticker: params[:base_stock_ticker])
 
     if @owned_stock.save
@@ -23,9 +22,7 @@ class OwnedStocksController < ApplicationController
       redirect_to portfolio_path(@portfolio)
     else
       flash[:warning] = "Your order has not been executed. Please try again"
-      #This won't work, re-render a form page instead
-      #Need to reference another directory if you want to show the BaseStock show page
-      render portfolio_owned_stock_path(@owned_stock)
+      render '/base_stocks/show'
     end
   end
 

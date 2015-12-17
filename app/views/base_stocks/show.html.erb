@@ -11,9 +11,10 @@
 </div>
 
 <div id="stocks-buy">
-	<%= form_tag stocks_path, method: :get, remote: true, id:"search" do %>
-		<%= label_tag :quantity, "Number of Stocks:" %>
+	<%= form_tag owned_stocks_path, method: :post, remote: true, id:"buy-form" do %>
+		<%= label_tag :quantity, "Buy Stocks:" %>
 		<%= number_field_tag :quantity, params[:quantity] %>
+		<%= options_for_select(@groups.map{:name}) %>
 		<%= submit_tag 'Submit', :class => 'nav-button'  %>
 	<% end %>
 </div>

@@ -15,6 +15,7 @@ class BaseStocksController < ApplicationController
   end
 
   def show
+    @groups = current_user.groups
   end
 
   def new

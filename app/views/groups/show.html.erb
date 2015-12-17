@@ -9,7 +9,7 @@
 		<% @group.users.each do |user| %>
 		  <%= link_to portfolio_path(user.find_portfolio(@group.id)), class: "list-group-item" do %>
 		  	<p> <%= user.username %> |
-				Portfolio net worth: <%= user.portfolios.where(group_id: @group.id).take.current_value %></p>
+				Portfolio net worth: <%= number_to_currency(user.portfolios.where(group_id: @group.id).take.current_value) %></p>
 				<% end %>
 		<% end %>
 

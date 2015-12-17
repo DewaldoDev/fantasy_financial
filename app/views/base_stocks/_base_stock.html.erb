@@ -1,4 +1,3 @@
-<div class="stock-info">
-	<%= link_to base_stock.ticker, stock_path(base_stock) %>
-</div>
-
+<%= link_to stock_path(base_stock), class: "list-group-item" do %>
+	<strong><%= base_stock.name %></strong> <span class="index-price">Current Market Price: <%= number_to_currency(base_stock.current_market_price) %></span>
+<% end %>

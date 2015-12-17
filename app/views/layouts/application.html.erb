@@ -22,19 +22,20 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      <% if current_user %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolios <span class="caret"></span></a>
+        <li><%= link_to "Groups", groups_url %></li>
+        <li><%= link_to "Stocks", stocks_url %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      	<% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolios <span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <% current_user.groups.each do |group| %>
                 <li><a href=<%=group_url(group)%>> <%= group.name %> </a></li>
               <% end %>
             </ul>
           </li>
-          <% end %>
-        </ul>
-      <ul class="nav navbar-nav navbar-right">
-      	<% if current_user %>
         	<li><%=link_to 'Profile', user_path(current_user)%></li>
         	<li><%= link_to 'Logout', :logout, method: :post%></li>
     		<% else %>

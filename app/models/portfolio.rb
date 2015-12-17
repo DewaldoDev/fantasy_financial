@@ -6,7 +6,8 @@ class Portfolio < ActiveRecord::Base
 	validates :group_id, :user_id, :cash, presence: true
 	validates :cash, numericality: {greater_than: 0}
 
-	after_update :calculate_value
+	after_initialize :calculate_value
+	after_save :calculate_value
 
 	def calculate_value
 		if self.owned_stocks.present? && self.owned_stocks_changed?

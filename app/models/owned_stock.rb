@@ -35,4 +35,9 @@ class OwnedStock < ActiveRecord::Base
 	def current_bid_price
 		self.base_stock.current_bid_price
 	end
+
+	def total_value
+		self.current_market_price * self.quantity
+	end
+
 end

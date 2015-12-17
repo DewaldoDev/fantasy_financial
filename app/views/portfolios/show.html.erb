@@ -1,24 +1,42 @@
+<div class="container">
+	<h1>	<%= @portfolio.user.username%>'s Portfolio in: <%= @portfolio.group.name%> </h1>
 
-<%= @portfolio.user.username%>
-<%= @portfolio.group.name%>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+     		<tr>
+        	<th>Cash Holdings</th>
+       		<th><%=@portfolio.cash%></th>
+      	</tr>
+    	</thead>
+		</table>
+	</div>
 
-<% if @portfolio.owned_stocks.present? %>
-	<% @portfolio.owned_stocks.each do |stock| %>
-		<%= stock.portfolio.ticker %>
-		<%= stock.portfolio.name %>
-		<%= stock.portfolio.buy_price %>
-		<%= stock.portfolio.buy_date %>
-		<%= stock.portfolio.quantity %>
-	<% end %>
- <% else %>
-    <p>"These are not the stocks you are looking for."</p>
-<% end %>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Company Name</th>
+        <th>Quantity Owned</th>
+        <th>Current Market Price</th>
+        <th>Purchased Price</th>
+       	<th>Current Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <% @owned_stocks.each do |stock| %>
+        <td><%= stock.ticker %></td>
+        <td><%= stock.name %></td>
+        <td><%= stock.quantity%></td>
+        <td><%= stock.current_market_price %></td>
+        <td><%= stock.buy_price%></td>
+        <td><%= stock.total_value %></td>
+      <% end %>
+      </tr>
+    </tbody>
+		</table>
+	</div>
 
-<%= @portfolio.current_value %>
-
-
-<%= form_for(@owned_stock) do |f| %>
-  Quantity: <%= f.number_field_tag :quantity %>
-  <%= f.submit 'Buy' %>
-  <%= f.submit 'Sell' %>
-<% end %>
+</div>

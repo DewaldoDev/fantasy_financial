@@ -14,6 +14,7 @@ class Group < ActiveRecord::Base
 		self.start_date = Time.now
 	end
 
+# Better suited for participation model
 	def assign_portfolios
 		self.users.each do |user|
 			user.portfolios.create(

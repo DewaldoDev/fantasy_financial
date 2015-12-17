@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="jumbotron">
+		<h1><%=@user.username%></h1>
+		<p><%=@user.first_name%> <%=@user.last_name %></p>
+	</div>
+	<div class="list-group">
+		<h2>Your current games:</h2>
+		<% @user.groups.each do |group| %>
+		<a class="list-group-item" href=<%=group_url(group)%> ><%=group.name%> </a>
+		<% end %>
+
+	</div>
+</div>

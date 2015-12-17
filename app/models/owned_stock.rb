@@ -42,4 +42,8 @@ class OwnedStock < ActiveRecord::Base
 		self.portfolio.calculate_value
 	end
 
+	def total_value
+		(self.current_market_price * self.quantity).round(2)
+	end
+
 end

@@ -10,10 +10,13 @@
 	<p>No. of Stocks You Own: </p>
 </div>
 
-<div id="stocks-buy">
-	<%= form_tag stocks_path, method: :get, remote: true, id:"search" do %>
-		<%= label_tag :quantity, "Number of Stocks:" %>
-		<%= number_field_tag :quantity, params[:quantity] %>
-		<%= submit_tag 'Submit', :class => 'nav-button'  %>
+<div>
+	<%= form_for @owned_stock, url: {action: "create", controller: "owned_stocks"} do |f| %>
+		<%= hidden_field_tag(:base_stock_id, @base_stock.id) %>
+		<%= f.hidden_field(:buy_price, :value => @base_stock.current_market_price) %>
+		<%= f.label :quantity, "Buy Stocks:" %>
+		<%= f.number_field :quantity, :value => params[:quantity] %>
+		<%= f.collection_select(:portfolio_id, @portfolios, :id, :name) %>
+		<%= f.submit 'Buy', :class => 'nav-button'  %>
 	<% end %>
 </div>

@@ -15,6 +15,8 @@ class BaseStocksController < ApplicationController
   end
 
   def show
+    @portfolios = current_user.portfolios
+    @owned_stock = OwnedStock.new
   end
 
   def new

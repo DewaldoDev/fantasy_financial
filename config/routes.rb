@@ -2,13 +2,12 @@ Rails.application.routes.draw do
 
 	root to: "users#home"
 
-  resources :portfolios do
-    resources :stocks, controller: 'owned_stocks'
-  end
+  resources :portfolios
 
   resources :users
   resources :groups
   resources :stocks, controller: 'base_stocks'
+  resources :owned_stocks
 
 # User session routes
   resources :user_sessions

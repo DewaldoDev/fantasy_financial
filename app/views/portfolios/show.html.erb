@@ -6,7 +6,7 @@
 			<thead>
      		<tr>
         	<th>Cash Holdings</th>
-       		<th><%=@portfolio.cash%></th>
+       		<th><%= number_to_currency(@portfolio.cash) %></th>
       	</tr>
     	</thead>
 		</table>
@@ -25,18 +25,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+
       <% @owned_stocks.each do |stock| %>
-        <td><%= stock.ticker %></td>
-        <td><%= stock.name %></td>
-        <td><%= stock.quantity%></td>
-        <td><%= stock.current_market_price %></td>
-        <td><%= stock.buy_price%></td>
-        <td><%= stock.total_value %></td>
+				<tr>
+					<td><%= stock.ticker %></td>
+	        <td><%= stock.name %></td>
+	        <td><%= stock.quantity%></td>
+	        <td><%= number_to_currency(stock.current_market_price) %></td>
+	        <td><%= number_to_currency(stock.buy_price) %></td>
+	        <td><%= number_to_currency(stock.total_value) %></td>
+				</tr>
       <% end %>
-      </tr>
+
     </tbody>
 		</table>
 	</div>
 </div>
-

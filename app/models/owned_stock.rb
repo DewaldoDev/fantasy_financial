@@ -43,7 +43,7 @@ class OwnedStock < ActiveRecord::Base
 	end
 
 	def total_value
-		(self.current_market_price * self.quantity).round(2)
+		self.current_market_price * self.quantity
 	end
 
 end

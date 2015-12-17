@@ -38,6 +38,7 @@ class OwnedStock < ActiveRecord::Base
 	end
 
 	def update_portfolio
+		self.portfolio.cash -= self.current_market_price * self.quantity
 		self.portfolio.calculate_value
 	end
 end

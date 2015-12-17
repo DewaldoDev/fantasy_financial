@@ -14,11 +14,9 @@ class Portfolio < ActiveRecord::Base
 		if self.owned_stocks.present?
 			self.current_value = self.stocks_value + self.cash
 			self.save
-			puts self.current_value
 		else
 			self.current_value = self.cash
 			self.save
-			puts self.current_value
 		end
 	end
 

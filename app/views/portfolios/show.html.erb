@@ -15,26 +15,28 @@
 	<div class="table-responsive">
 		<table class="table">
 			<thead>
-      <tr>
-        <th>Ticker</th>
-        <th>Company Name</th>
-        <th>Quantity Owned</th>
-        <th>Current Market Price</th>
-        <th>Purchased Price</th>
-       	<th>Current Value</th>
-      </tr>
+        <tr>
+          <th>Ticker</th>
+          <th>Company Name</th>
+          <th>Quantity Owned</th>
+          <th>Current Market Price</th>
+          <th>Purchased Price</th>
+         	<th>Current Value</th>
+          <th>Sell Stock</th>
+        </tr>
     </thead>
     <tbody>
-      <tr>
       <% @owned_stocks.each do |stock| %>
-        <td><%= stock.ticker %></td>
-        <td><%= stock.name %></td>
-        <td><%= stock.quantity%></td>
-        <td><%= stock.current_market_price %></td>
-        <td><%= stock.buy_price%></td>
-        <td><%= stock.total_value %></td>
+        <tr>
+          <td><%= stock.ticker %></td>
+          <td><%= stock.name %></td>
+          <td><%= stock.quantity%></td>
+          <td><%= stock.current_market_price %></td>
+          <td><%= stock.buy_price %></td>
+          <td><%= stock.total_value %></td>
+          <td><%= number_field_tag class: "sell-quantity" %><%= button_tag "Sell", class: "sell-button" %></td>
+        </tr>
       <% end %>
-      </tr>
     </tbody>
 		</table>
 	</div>

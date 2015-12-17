@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
   	stock_info
   end
 
+  def find_portfolio(group_id)
+    self.portfolios.find_by(group_id: group_id)
+  end
+
 end

@@ -7,10 +7,10 @@
 	<div class="list-group">
 		<h2>Players:</h2>
 		<% @group.users.each do |user| %>
-		  <%= link_to portfolios/"#{user.@group.portfolio.id}", class: "list-group-item" do %>
+		  <%= link_to portfolio_path(user.find_portfolio(@group.id)), class: "list-group-item" do %>
 		  	<p> <%= user.username %> |
 				Portfolio net worth: <%= user.portfolios.where(group_id: @group.id).take.current_value %></p>
-			<% end %>
+				<% end %>
 		<% end %>
 
 	</div>

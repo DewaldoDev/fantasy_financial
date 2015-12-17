@@ -13,13 +13,12 @@ class OwnedStocksController < ApplicationController
   end
 
   def create
-    @portfolio = Portfolio.find(params[:portfolio_id])
-    @owned_stock = @portfolio.owned_stocks.new(owned_stock_params)
-    @owned_stock.base_stock = BaseStock.where(ticker: params[:base_stock_ticker])
+    @owned_stock = OwnedStock.new(owned_stock_params)
+    @owned_stock.base_stock = BaseStock.find(params[:base_stock_id])
 
     if @owned_stock.save
       flash[:notice] = "Your order has been executed"
-      redirect_to portfolio_path(@portfolio)
+      redirect_to :back
     else
       flash[:warning] = "Your order has not been executed. Please try again"
       render '/base_stocks/show'
@@ -41,6 +40,6 @@ class OwnedStocksController < ApplicationController
   end
 
   def owned_stock_params
-    params.require(:owned_stock).permit(:buy_price, :quantity, :buy_date)
+    params.require(:owned_stock).permit(:buy_price, :quantity, :portfolio_id)
   end
 end

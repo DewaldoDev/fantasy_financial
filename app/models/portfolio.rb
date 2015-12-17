@@ -8,6 +8,10 @@ class Portfolio < ActiveRecord::Base
 
 	after_update :calculate_value
 
+	def name
+		self.group.name
+	end
+
 	def calculate_value
 		if self.owned_stocks.present? && self.owned_stocks_changed?
 			self.current_value = self.stocks_value + self.cash

@@ -15,10 +15,3 @@
 <% end %>
 
 <%= @portfolio.current_value %>
-
-
-<%= form_for(@owned_stock) do |f| %>
-  Quantity: <%= f.number_field_tag :quantity %>
-  <%= f.submit 'Buy' %>
-  <%= f.submit 'Sell' %>
-<% end %>

@@ -2,12 +2,13 @@ class OwnedStock < ActiveRecord::Base
 	belongs_to :portfolio
 	belongs_to :base_stock
 
-	validate :must_have_sufficient_cash
 	validates :buy_price, :quantity, :buy_date, :portfolio_id, :base_stock_id, presence: true
 	validates :buy_price, :quantity, numericality: {greater_than: 0}
+	validate :must_have_sufficient_cash
 
 	before_validation :set_properties, on: [:create]
 
+	after_save :update_portfolio
 
 	def must_have_sufficient_cash
 		total_cost = self.quantity * self.buy_price
@@ -34,5 +35,9 @@ class OwnedStock < ActiveRecord::Base
 
 	def current_bid_price
 		self.base_stock.current_bid_price
+	end
+
+	def update_portfolio
+		self.portfolio.calculate_value
 	end
 end

@@ -6,23 +6,27 @@ class Portfolio < ActiveRecord::Base
 	validates :group_id, :user_id, :cash, presence: true
 	validates :cash, numericality: {greater_than: 0}
 
-	after_update :calculate_value
-
 	def name
 		self.group.name
 	end
 
 	def calculate_value
-		if self.owned_stocks.present? && self.owned_stocks_changed?
+		if self.owned_stocks.present?
 			self.current_value = self.stocks_value + self.cash
 			self.save
-		elsif !self.current_value.present?
+			puts self.current_value
+		else
 			self.current_value = self.cash
 			self.save
+			puts self.current_value
 		end
 	end
 
 	def stocks_value
-		self.owned_stocks.inject{|sum, stock| sum += stock.current_market_value}
+		total_value = 0
+		self.owned_stocks.each do |stock|
+			total_value += stock.quantity * stock.current_market_price
+		end
+		total_value
 	end
 end

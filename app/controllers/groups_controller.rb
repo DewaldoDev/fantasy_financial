@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :find_group, only: [:show, :edit, :update, :destroy]
+  before_action :find_group, only: [:show, :edit, :update, :destroy, :join]
 
   def index
     if params[:name]
@@ -37,6 +37,12 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def join
+    @user = current_user
+    @user.groups << @group
+    redirect_to group_url(@group)
   end
 
   private

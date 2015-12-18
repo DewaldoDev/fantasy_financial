@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :groups
+  post "/groups/:id/participation", to: "groups#join"
+
   resources :stocks, controller: 'base_stocks'
   resources :owned_stocks
 

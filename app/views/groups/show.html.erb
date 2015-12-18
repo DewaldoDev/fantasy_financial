@@ -8,7 +8,8 @@
 	<!-- if current user == group creator delete group button -->
 	<% if !@group.users.include?(current_user) %>
 		<!-- Add button to join group -->
-		<h5>Join the Group</h5>
+
+	<%= link_to "Join This Group", "/groups/#{@group.id}/participation", method: :post,  class: "btn btn-default" %>
 	<% end %>
 	<div class="list-group">
 		<h2>Players:</h2>

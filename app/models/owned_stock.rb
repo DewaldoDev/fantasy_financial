@@ -7,8 +7,9 @@ class OwnedStock < ActiveRecord::Base
 	validate :must_have_sufficient_cash
 
 	before_validation :set_properties, on: [:create]
-
 	after_save :update_portfolio
+
+	delegate :ticker, :name, :current_market_price, :current_bid_price, to: :base_stock
 
 	def must_have_sufficient_cash
 		total_cost = self.quantity * self.buy_price
@@ -17,24 +18,14 @@ class OwnedStock < ActiveRecord::Base
 		end
 	end
 
-	def set_properties
-		self.buy_date = Time.now
-	end
-
-	def ticker
-		self.base_stock.ticker
-	end
-
-	def name
-		self.base_stock.name
-	end
-
-	def current_market_price
-		self.base_stock.current_market_price
-	end
-
-	def current_bid_price
-		self.base_stock.current_bid_price
+	def sell_stock(quantity_to_sell)
+		self.quantity -= quantity_to_sell
+		if self.quantity == 0
+			self.destroy
+		else
+			self.save
+		end
+		return (quantity_to_sell * self.current_market_price).round(2)
 	end
 
 	def update_portfolio
@@ -44,6 +35,10 @@ class OwnedStock < ActiveRecord::Base
 
 	def total_value
 		(self.current_market_price * self.quantity).round(2)
+	end
+
+	def set_properties
+		self.buy_date = Time.now
 	end
 
 end

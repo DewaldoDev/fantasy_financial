@@ -1,0 +1,15 @@
+<% @owned_stocks.each do |stock| %>
+  <tr>
+    <td class="stock-ticker"><%= stock.ticker %></td>
+    <td class="stock-name"><%= stock.name %></td>
+    <td class="stock-quantity"><%= stock.quantity%></td>
+    <td class="stock-current-price"><%= stock.current_market_price %></td>
+    <td class="stock-buy-price"><%= stock.buy_price %></td>
+    <td class="stock-total-value"><%= stock.total_value %></td>
+    <td><%= form_tag portfolio_path(@portfolio), method: :patch, remote: true do %>
+      <%= hidden_field_tag :stock_id, stock.id %>
+      <%= number_field_tag :stock_quantity, value: nil, max: stock.quantity %>
+      <%= submit_tag "Sell" %>
+      <% end %></td>
+  </tr>
+<% end %>

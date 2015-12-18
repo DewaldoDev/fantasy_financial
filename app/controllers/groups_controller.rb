@@ -2,7 +2,11 @@ class GroupsController < ApplicationController
   before_action :find_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @groups = Group.all
+    if params[:name]
+      @groups = Group.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%")
+    else
+      @groups = Group.all
+    end
   end
 
   def show

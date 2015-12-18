@@ -1,3 +1,12 @@
-<div id="group-list">
-<%= render @groups %>
+<div class="container">
+  <div class="search">
+    <%= form_tag groups_path, method: :get, remote: true do %>
+      <%= label_tag :name, "Group Search:" %>
+      <%= text_field_tag :name, params[:name] %>
+      <%= submit_tag 'Submit', class: "btn btn-default" %>
+    <% end %>
+  </div>
+  <div id="list-group" class="group-list">
+    <%= render @groups %>
+  </div>
 </div>

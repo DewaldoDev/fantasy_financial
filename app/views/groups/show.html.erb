@@ -4,6 +4,10 @@
 		<h1><%= @group.name %></h1>
 		<p>End Date: <%= @group.end_date %></p>
 	</div>
+	<% if !@group.users.include?(current_user) %>
+		<!-- Add button to join group -->
+		<h5>Join the Group</h5>
+	<% end %>
 	<div class="list-group">
 		<h2>Players:</h2>
 		<% @group.users.each do |user| %>

@@ -1,1 +1,6 @@
-$('.stock-row#<%= @owned_stock.id %>').html('<%= j(render partial: "portfolios/owned_stock", object: @owned_stock) %>');
+if (<%= @owned_stock.quantity %> > 0){
+	$('.stock-row#<%= @owned_stock.id %>').html('<%= j(render partial: "portfolios/owned_stock", object: @owned_stock) %>');
+} else {
+	$('.stock-row#<%= @owned_stock.id %>').remove();
+}
+$('#portfolio-cash').html('<%= @portfolio.cash %>')

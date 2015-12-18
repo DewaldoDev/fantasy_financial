@@ -4,6 +4,7 @@
 		<h1><%= @group.name %></h1>
 		<p>End Date: <%= @group.end_date %></p>
 	</div>
+	<!-- if current user == group creator delete group button -->
 	<% if !@group.users.include?(current_user) %>
 		<!-- Add button to join group -->
 		<h5>Join the Group</h5>

@@ -7,10 +7,6 @@
 		<p>Bid Price: <%= @base_stock.current_bid_price %></p>
 	</div>
 
-	<div class="user-stock-show">
-		<p>No. of Stocks You Own: </p>
-	</div>
-
 	<div>
 		<%= form_for @owned_stock, url: {action: "create", controller: "owned_stocks"} do |f| %>
 			<div class="form-group">

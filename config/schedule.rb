@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.hour do
+every 15.minutes do
 	rake "update_stock_prices"
 end

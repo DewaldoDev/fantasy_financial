@@ -3,4 +3,4 @@ if (<%= @owned_stock.quantity %> > 0){
 } else {
 	$('.stock-row#<%= @owned_stock.id %>').remove();
 }
-$('#portfolio-cash').html('<%= @portfolio.cash %>')
+$('#portfolio-cash').html('<%= number_to_currency(@portfolio.cash) %>')

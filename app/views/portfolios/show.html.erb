@@ -6,7 +6,7 @@
 			<thead>
      		<tr>
         	<th>Cash Holdings</th>
-       		<th><%= number_to_currency(@portfolio.cash) %></th>
+       		<th id="portfolio-cash"><%=@portfolio.cash%></th>
       	</tr>
     	</thead>
 		</table>
@@ -15,29 +15,23 @@
 	<div class="table-responsive">
 		<table class="table">
 			<thead>
-      <tr>
-        <th>Ticker</th>
-        <th>Company Name</th>
-        <th>Quantity Owned</th>
-        <th>Current Market Price</th>
-        <th>Purchased Price</th>
-       	<th>Current Value</th>
-      </tr>
+        <tr>
+          <th>Ticker</th>
+          <th>Company Name</th>
+          <th>Quantity Owned</th>
+          <th>Current Market Price</th>
+          <th>Purchased Price</th>
+         	<th>Current Value</th>
+          <th>Sell Stock</th>
+        </tr>
     </thead>
-    <tbody>
-
-      <% @owned_stocks.each do |stock| %>
-				<tr>
-					<td><%= stock.ticker %></td>
-	        <td><%= stock.name %></td>
-	        <td><%= stock.quantity%></td>
-	        <td><%= number_to_currency(stock.current_market_price) %></td>
-	        <td><%= number_to_currency(stock.buy_price) %></td>
-	        <td><%= number_to_currency(stock.total_value) %></td>
-				</tr>
-      <% end %>
-
-    </tbody>
+      <tbody id="stocks-table">
+        <% @owned_stocks.each do |stock| %>
+          <tr id=<%= stock.id %> class="stock-row">
+            <%= render partial: "portfolios/owned_stock", object: stock %>
+          </tr>
+        <% end %>
+       </tbody>
 		</table>
 	</div>
 </div>

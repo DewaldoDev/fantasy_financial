@@ -25,9 +25,13 @@
           <th>Sell Stock</th>
         </tr>
     </thead>
-    <tbody>
-      <%= render partial: "portfolios/owned_stock", object: @owned_stocks %>
-    </tbody>
+    <tbody id="stocks-table">
+      <% @owned_stocks.each do |stock| %>
+        <tr id=<%= stock.id %> class="stock-row">
+          <%= render partial: "portfolios/owned_stock", object: stock %>
+        </tr>
+      <% end %>
+     </tbody>
 		</table>
 	</div>
 </div>

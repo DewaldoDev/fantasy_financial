@@ -1,5 +1,5 @@
 <div class="container">
-	<div id="stocks-search-bar">
+	<div id="stocks-search-bar" class="search">
 		<%= form_tag stocks_path, method: :get, remote: true, id:"search" do %>
 			<%= label_tag :ticker, "Ticker Search:" %>
 			<%= text_field_tag :ticker, params[:ticker] %>

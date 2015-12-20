@@ -5,9 +5,12 @@
 	</div>
 	<div class="list-group">
 		<h2>Your current games:</h2>
-		<% @user.groups.each do |group| %>
-		<a class="list-group-item" href=<%=group_url(group)%> ><%=group.name%> </a>
+		<% if current_user.groups.any? %>
+			<% @user.groups.each do |group| %>
+			<a class="list-group-item" href=<%=group_url(group)%> ><%=group.name%> | Your Portfolio Net Worth:<%= number_to_currency(current_user.portfolios.where(group_id: group.id).take.current_value) %> </a>
+			<% end %>
+		<% else %>
+			<p><%= link_to "Find", groups_url %> or <%= link_to "Start", new_group_url %> to start trading.</p>
 		<% end %>
-
 	</div>
 </div>

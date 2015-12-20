@@ -1,5 +1,5 @@
 <%= link_to stock_path(base_stock), class: "list-group-item" do %>
 	<div class="row">
-	<span class="col-sm-4"><%= base_stock.ticker %></span><span class="col-sm-4"><%= base_stock.name %></span> <span class="index-price"><%= number_to_currency(base_stock.current_market_price) %></span>
+		<span class="col-sm-4"><%= base_stock.ticker %></span><span class="col-sm-4"><%= base_stock.name %></span> <span class="index-price"><%= number_to_currency(base_stock.current_market_price) %></span>
 	</div>
 <% end %>

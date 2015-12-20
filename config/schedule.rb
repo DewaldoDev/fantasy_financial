@@ -19,5 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 every 15.minutes do
+	rake "db:migrate"
 	rake "update_stock_prices"
 end

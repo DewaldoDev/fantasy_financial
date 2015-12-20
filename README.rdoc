@@ -1,28 +1,23 @@
-== README
+#Fantasy Finance
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A stock market game you can play with your friends. See who is the best trader over a week, month, year, you decide! Stock prices updated every 10 minutes to reflect the real current market prices. Currently trading on ~3200 stocks. Support for multiple games simultaneously for each user. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Create your own game and decide your starting capital, how many players and the time frame. Then start trading.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Getting Started:
+- Clone this repository
+- Bundle install
+- Rails s
+- localhost:3000
+
+
+Specs:
+- Ruby on Rails 4.*.*
+- Yahoo! Finance API
+
+Contributors:
+- Tyler Dewald
+- Matt Cavdar
+- Andrew Carter
+- Alon Jourdan

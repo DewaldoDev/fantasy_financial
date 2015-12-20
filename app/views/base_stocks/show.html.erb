@@ -1,6 +1,6 @@
 <div class="container">
 	<h1><%= @base_stock.name %></h1>
-
+	<img src="http://chart.finance.yahoo.com/z?s=<%= @base_stock.ticker %>&t=1d&q=l&l=on&z=l">
 	<div class="stock-show">
 		<p>Ticker: <%= @base_stock.ticker %></p>
 		<p>Market Price: <%= @base_stock.current_market_price %></p>

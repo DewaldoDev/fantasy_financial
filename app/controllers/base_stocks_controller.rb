@@ -3,9 +3,9 @@ class BaseStocksController < ApplicationController
 
   def index
     if params[:ticker]
-      @base_stocks = BaseStock.where("LOWER(ticker) LIKE LOWER(?)", "%#{params[:ticker]}%")
+      @base_stocks = BaseStock.where("LOWER(ticker) LIKE LOWER(?)", "%#{params[:ticker]}%").paginate(:page => params[:page], :per_page => 20)
     else
-      @base_stocks = BaseStock.all
+      @base_stocks = BaseStock.paginate(:page => params[:page], :per_page => 20)
     end
 
     respond_to do |format|

@@ -9,7 +9,14 @@
 
 	<div id="stock-list">
 		<div class="stock-info list-group">
-			<%= render @base_stocks %>
+			<div class="heading">
+					<span class="list-group-item">
+						<div class="row">
+							<span class="col-sm-4">Ticker</span><span class="col-sm-4">Name</span><span class="index-price">Current Market Price</span>
+						</div>
+					</span>
+			</div>
+			<%= will_paginate @base_stocks %>
 		</div>
 	</div>
 </div>

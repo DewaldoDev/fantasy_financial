@@ -36,6 +36,9 @@ gem 'validates_timeliness'
 # For scheduling background tasks
 gem 'whenever'
 
+#pagination
+gem 'will_paginate'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -1,3 +1,10 @@
+<div class="heading">
+		<span class="list-group-item">
+			<div class="row">
+				<span class="col-sm-4">Ticker</span><span class="col-sm-4">Name</span><span class="index-price">Current Market Price</span>
+			</div>
+		</span>
+</div>
 <% @base_stocks.each do |base_stock| %>
 	<%= link_to stock_path(base_stock), class: "list-group-item" do %>
 		<div class="row">

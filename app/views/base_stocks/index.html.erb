@@ -1,21 +1,28 @@
 <div class="container">
 	<div id="stocks-search-bar" class="search">
-		<%= form_tag stocks_path, method: :get, remote: true, id:"search" do %>
-			<%= label_tag :ticker, "Ticker Search:" %>
-			<%= text_field_tag :ticker, params[:ticker] %>
-			<%= submit_tag 'Submit', :class => 'btn btn-default'  %>
+		<%= form_tag stocks_path, method: :get, remote: true, id:"stock-ticker-search" do %>
+			<div class="form-group">
+				<%= label_tag :ticker, "Search by Ticker:" %>
+				<%= text_field_tag :ticker, params[:ticker], class: 'form-control' %>
+			</div>
+			<div class="form-group">
+				<%= submit_tag 'Submit', :class => 'btn btn-default'  %>
+			</div>
 		<% end %>
+		<%= form_tag stocks_path, method: :get, remote: true, id:"stock-name-search" do %>
+			<div class="form-group">
+				<%= label_tag :name, "Search by Name:" %>
+				<%= text_field_tag :name, params[:name], class: 'form-control' %>
+			</div>
+			<div class="form-group">
+				<%= submit_tag 'Submit', :class => 'btn btn-default'  %>
+			</div>
+		<% end %>
+
 	</div>
 
 	<div id="stock-list">
 		<div class="stock-info list-group">
-			<div class="heading">
-					<span class="list-group-item">
-						<div class="row">
-							<span class="col-sm-4">Ticker</span><span class="col-sm-4">Name</span><span class="index-price">Current Market Price</span>
-						</div>
-					</span>
-			</div>
 			<%= render 'base_stock' %>
 		</div>
 	</div>

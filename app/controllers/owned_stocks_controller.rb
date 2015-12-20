@@ -21,7 +21,7 @@ class OwnedStocksController < ApplicationController
       redirect_to :back
     else
       flash[:warning] = "Your order has not been executed. Please try again"
-      render '/base_stocks/show'
+      redirect_to stock_path(params[:base_stock_id])
     end
   end
 

@@ -1,4 +1,4 @@
-#Fantasy Finance
+## Fantasy Finance
 
 A stock market game you can play with your friends. See who is the best trader over a week, month, year, you decide! Stock prices updated every 10 minutes to reflect the real current market prices. Currently trading on ~3200 stocks. Support for multiple games simultaneously for each user. 
 

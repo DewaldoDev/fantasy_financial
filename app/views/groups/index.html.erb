@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="search col-sm-6">
-      <%= form_tag groups_path, method: :get, remote: true do %>
-        <%= label_tag :name, "Group Search:" %>
-        <%= text_field_tag :name, params[:name] %>
-        <%= submit_tag 'Submit', class: "btn btn-default" %>
+    <div class="search col-sm-8">
+      <%= form_tag groups_path, method: :get, remote: true, class: "form-inline" do %>
+        <div class="form-group">
+          <%= label_tag :name, "Group Search:" %>
+          <%= text_field_tag :name, params[:name], class: "form-control" %>
+          <%= submit_tag 'Submit', class: "btn btn-default" %>
+        </div>
       <% end %>
     </div>
-    <div class="new-group">
+    <div class="new-group col-sm-4">
       <%= link_to "Create a New Group", new_group_url, class: 'btn btn-default', id: "create-group-btn" %>
     </div>
   </div>
 
   <div id="list-group" class="group-list row">
-    <%= render @groups %>
+    <%= render 'group' %>
   </div>
 </div>

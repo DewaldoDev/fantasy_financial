@@ -3,9 +3,9 @@ class GroupsController < ApplicationController
 
   def index
     if params[:name]
-      @groups = Group.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%")
+      @groups = Group.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%").paginate(:page => params[:page])
     else
-      @groups = Group.all
+      @groups = Group.paginate(:page => params[:page])
     end
   end
 

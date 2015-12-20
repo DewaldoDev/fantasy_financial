@@ -1,11 +1,11 @@
 <td class="stock-ticker"><%= owned_stock.ticker %></td>
 <td class="stock-name"><%= owned_stock.name %></td>
 <td class="stock-quantity"><%= owned_stock.quantity%></td>
-<td class="stock-current-price"><%= owned_stock.current_market_price %></td>
-<td class="stock-buy-price"><%= owned_stock.buy_price %></td>
-<td class="stock-total-value"><%= owned_stock.total_value %></td>
+<td class="stock-current-price"><%= number_to_currency(owned_stock.current_market_price) %></td>
+<td class="stock-buy-price"><%= number_to_currency(owned_stock.buy_price) %></td>
+<td class="stock-total-value"><%= number_to_currency(owned_stock.total_value) %></td>
 <td><%= form_tag portfolio_path(@portfolio), method: :patch, remote: true do %>
   <%= hidden_field_tag :stock_id, owned_stock.id %>
-  <%= number_field_tag :stock_quantity, value: nil, max: owned_stock.quantity %>
+  <%= number_field_tag :stock_quantity, nil, max: owned_stock.quantity %>
   <%= submit_tag "Sell" %>
   <% end %></td>

@@ -6,7 +6,7 @@
 			<thead>
      		<tr>
         	<th>Cash Holdings</th>
-       		<th id="portfolio-cash"><%=@portfolio.cash%></th>
+       		<th id="portfolio-cash"><%=number_to_currency(@portfolio.cash)%></th>
       	</tr>
     	</thead>
 		</table>

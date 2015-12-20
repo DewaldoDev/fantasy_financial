@@ -19,13 +19,17 @@ class OwnedStock < ActiveRecord::Base
 	end
 
 	def sell_stock(quantity_to_sell)
-		self.quantity -= quantity_to_sell
-		if self.quantity == 0
-			self.destroy
+		if self.quantity < quantity_to_sell
+			flash[:warning] = "You cannot sell more than you own"
 		else
-			self.save
+			self.quantity -= quantity_to_sell
+			if self.quantity == 0
+				self.destroy
+			else
+				self.save
+			end
+			return (quantity_to_sell * self.current_market_price).round(2)
 		end
-		return (quantity_to_sell * self.current_market_price).round(2)
 	end
 
 	def update_portfolio

@@ -7,21 +7,25 @@
 	</div>
 
 	<div>
-		<%= form_for @owned_stock, url: {action: "create", controller: "owned_stocks"} do |f| %>
-			<div class="form-group">
-				<%= hidden_field_tag(:base_stock_id, @base_stock.id) %>
-				<%= f.hidden_field(:buy_price, :value => @base_stock.current_market_price) %>
-			</div>
-			<%= f.label :quantity, "Buy Stocks:" %>
-			<div class="row">
-				<div class="form-group col-sm-6">
-					<%= f.number_field :quantity, :value => params[:quantity], class: "form-control" %>
+		<% if current_user %>
+			<%= form_for @owned_stock, url: {action: "create", controller: "owned_stocks"} do |f| %>
+				<div class="form-group">
+					<%= hidden_field_tag(:base_stock_id, @base_stock.id) %>
+					<%= f.hidden_field(:buy_price, :value => @base_stock.current_market_price) %>
 				</div>
-				<div class="form-group col-sm-6">
-					<%= f.collection_select(:portfolio_id, @portfolios, :id, :name, {}, {:class => "form-control"}) %>
+				<%= f.label :quantity, "Buy Stocks:" %>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<%= f.number_field :quantity, :value => params[:quantity], class: "form-control" %>
+					</div>
+					<div class="form-group col-sm-6">
+						<%= f.collection_select(:portfolio_id, @portfolios, :id, :name, {}, {:class => "form-control"}) %>
+					</div>
 				</div>
-			</div>
-				<%= f.submit 'Buy', :class => 'nav-button btn btn-default' %>
+					<%= f.submit 'Buy', :class => 'nav-button btn btn-default' %>
+			<% end %>
+		<% else %>
+			<h5>Sign in to start trading</h5>
 		<% end %>
 	</div>
 </div>

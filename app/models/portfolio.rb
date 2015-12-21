@@ -6,6 +6,7 @@ class Portfolio < ActiveRecord::Base
 	validates :group_id, :user_id, :cash, presence: true
 	validates :cash, numericality: {greater_than: 0}
 
+
 	def name
 		self.group.name
 	end

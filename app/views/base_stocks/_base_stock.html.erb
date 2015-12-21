@@ -8,7 +8,7 @@
 <% @base_stocks.each do |base_stock| %>
 	<%= link_to stock_path(base_stock), class: "list-group-item" do %>
 		<div class="row">
-			<span class="col-xs-3"><%= base_stock.ticker %></span><span class="col-xs-3"><%= base_stock.name %></span> <span class="col-xs-3"><%= base_stock.change%></span> <span class="col-xs-3"><%= number_to_currency(base_stock.current_market_price) %></span>
+			<span class="col-xs-3"><%= base_stock.ticker %></span><span class="col-xs-3"><%= base_stock.name %></span> <span class="col-xs-3 per-change"><%= base_stock.change %></span> <span class="col-xs-3"><%= number_to_currency(base_stock.current_market_price) %></span>
 		</div>
 	<% end %>
 <% end %>

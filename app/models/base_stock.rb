@@ -3,20 +3,26 @@ class BaseStock < ActiveRecord::Base
 
 	has_many :owned_stocks
 
-	validates :current_market_price, :current_bid_price, numericality: {greater_than: 0}
+	validates :current_market_price, numericality: {greater_than: 0}
 
 	def self.seed_stocks_from_file(filename)
 
 		tickers = read_tickers_from_file(filename)
 
-		stocks = fetch_stock_data(tickers, [:name, :last_trade_price_only, :bid])
+		stocks = fetch_stock_data(tickers, [:name, :last_trade_price_only, :change, :change_in_percent, :industry, :sector])
+
+		puts "Stock data fetched"
 
 		stocks.each do |ticker, info|
+			puts "Creating stock #{ticker}"
 			BaseStock.create(
 				ticker: ticker,
 				name: info[:name],
 				current_market_price: info[:last_trade_price_only].to_f,
-				current_bid_price: info[:bid].to_f)
+				change: info[:change].to_f,
+				percent_change: info[:change_in_percent].to_f,
+				industry: info[:industry]||"N/A",
+				sector: info[:sector]||"N/A")
 		end
 	end
 
@@ -30,17 +36,23 @@ class BaseStock < ActiveRecord::Base
 	end
 
 	def self.fetch_stock_data(tickers, options)
-		YahooFinance::Stock.new(tickers, options).fetch
+		stock_data = {}
+		tickers.each_slice(300) do |ticker_chunk|
+			puts "Processing ticker chunk"
+			stock_data.merge!(YahooFinance::Stock.new(ticker_chunk, options).fetch)
+		end
+		stock_data
 	end
 
 	def self.update_prices
 		stocks = BaseStock.all
-		data = fetch_stock_data(stocks.map(&:ticker), [:last_trade_price_only, :bid])
+		data = fetch_stock_data(stocks.map(&:ticker), [:last_trade_price_only, :change, :change_in_percent])
 
 		stocks.each do |stock|
 			t = stock.ticker
 			stock.current_market_price = data[t][:last_trade_price_only]
-			stock.current_bid_price = data[t][:bid]
+			stock.change = data[t][:change]
+			stock.percent_change = data[t][:change_in_percent]
 			stock.save
 		end
 	end

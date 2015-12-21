@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215204704) do
+ActiveRecord::Schema.define(version: 20151221150141) do
 
   create_table "base_stocks", force: :cascade do |t|
     t.string   "ticker"
     t.string   "name"
     t.float    "current_market_price"
-    t.float    "current_bid_price"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.float    "change"
+    t.float    "percent_change"
+    t.string   "industry"
+    t.string   "sector"
   end
 
   create_table "groups", force: :cascade do |t|

@@ -12,4 +12,6 @@
 		</div>
 	<% end %>
 <% end %>
-<%= will_paginate @base_stocks %>
+<div class="container-fluid">
+	<%= will_paginate @base_stocks, renderer: BootstrapPagination::Rails %>
+</div>

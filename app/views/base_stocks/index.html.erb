@@ -10,6 +10,16 @@
 				<%= text_field_tag :name, params[:name], class: 'form-control' %>
 			</div>
 			<div class="form-group">
+				<label for="sector">
+					<select class="form-control" id="sector">
+						<option value="">Oil</option>
+						<option value="">Construction</option>
+						<option value="">Technology</option>
+						<option value="">Automotive</option>
+					</select>
+				</label>
+			</div>
+			<div class="form-group">
 				<%= submit_tag 'Submit', :class => 'btn btn-default'  %>
 			</div>
 		<% end %>

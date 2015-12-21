@@ -177,6 +177,8 @@ GEM
     whenever (0.9.4)
       chronic (>= 0.6.3)
     will_paginate (3.0.7)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
     yahoo_finance_lib (0.7.9.9)
       nas-yahoo_stock (~> 1.0.8, >= 1.0.8)
       nokogiri (~> 1.6.1, >= 1.6.1)
@@ -201,7 +203,7 @@ DEPENDENCIES
   validates_timeliness
   web-console (~> 2.0)
   whenever
-  will_paginate
+  will_paginate-bootstrap
   yahoo_finance_lib
 
 BUNDLED WITH

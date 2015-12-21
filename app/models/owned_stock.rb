@@ -9,7 +9,7 @@ class OwnedStock < ActiveRecord::Base
 	before_validation :set_properties, on: [:create]
 	after_save :update_portfolio
 
-	delegate :ticker, :name, :current_market_price, :change, :percent_change, :industry, :sector to: :base_stock
+	delegate :ticker, :name, :current_market_price, :change, :percent_change, :industry, :sector, to: :base_stock
 
 	def must_have_sufficient_cash
 		total_cost = self.quantity||0 * self.buy_price

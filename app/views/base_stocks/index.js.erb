@@ -1,1 +1,14 @@
 $('#stock-list').html("<%= j(render 'base_stock') %>");
+$('.per-change').each(function(){
+  var number = parseFloat($(this).text())
+  var color = '';
+  if (!isNaN(number)) {
+      if (number < 0) {
+          color = 'red';
+      }
+      if (number > 0) {
+          color = 'green';
+      }
+      $(this).css('color', color);
+  }
+});

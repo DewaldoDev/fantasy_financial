@@ -37,7 +37,7 @@ gem 'validates_timeliness'
 gem 'whenever'
 
 #pagination
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

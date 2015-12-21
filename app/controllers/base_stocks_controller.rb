@@ -2,10 +2,8 @@ class BaseStocksController < ApplicationController
   before_action :find_base_stock, only: [:show, :edit, :update, :create, :destroy]
 
   def index
-    if params[:ticker]
-      @base_stocks = BaseStock.where("LOWER(ticker) LIKE LOWER(?)", "%#{params[:ticker]}%").paginate(:page => params[:page])
-    elsif params[:name]
-      @base_stocks = BaseStock.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%").paginate(:page => params[:page])
+    if params[:name] || params[:ticker]
+      @base_stocks = BaseStock.where("LOWER(name) LIKE LOWER(?)", "%#{params[:name]}%").where("LOWER(ticker) LIKE LOWER(?)", "%#{params[:ticker]}%").paginate(:page => params[:page])
     else
       @base_stocks = BaseStock.paginate(:page => params[:page])
     end

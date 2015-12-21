@@ -17,9 +17,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @participation = current_user.participations.create
+    @participation = current_user.participations.new
     @group = Group.new(group_params)
     @group.participations << @participation
+    @participation.save
 
     if @group.save
       flash[:notice] = "Your group has been created"

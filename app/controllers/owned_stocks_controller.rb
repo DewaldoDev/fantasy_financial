@@ -7,7 +7,7 @@ class OwnedStocksController < ApplicationController
 
   def show
   end
-
+  
   def new
     @owned_stock = OwnedStock.new
   end

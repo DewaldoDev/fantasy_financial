@@ -42,8 +42,14 @@ class GroupsController < ApplicationController
 
   def join
     @user = current_user
-    @user.groups << @group
-    redirect_to group_url(@group)
+
+    unless @group.is_full?
+      @user.groups << @group
+      redirect_to group_url(@group)
+    else
+      flash[:warning] = "Sorry, group has a maximum of #{@group.max_size} users."
+      redirect_to :back
+    end
   end
 
   private

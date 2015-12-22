@@ -12,7 +12,7 @@ class OwnedStock < ActiveRecord::Base
 	delegate :ticker, :name, :current_market_price, :change, :percent_change, :industry, :sector, to: :base_stock
 
 	def must_have_sufficient_cash
-		total_cost = self.quantity||0 * self.buy_price
+		total_cost = (self.quantity.to_f||0.0) * self.buy_price
 		if portfolio.cash < total_cost
 			errors.add(:quantity, "Insufficient cash for stock purchase")
 		end

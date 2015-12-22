@@ -19,16 +19,20 @@ class OwnedStock < ActiveRecord::Base
 	end
 
 	def sell_stock(quantity_to_sell)
-		if self.quantity < quantity_to_sell
-			flash[:warning] = "You cannot sell more than you own"
-		else
-			self.quantity -= quantity_to_sell
-			if self.quantity == 0
-				self.destroy
+		if quantity_to_sell > 0
+			if self.quantity < quantity_to_sell
+				flash[:warning] = "You cannot sell more than you own"
 			else
-				self.save
+				self.quantity -= quantity_to_sell
+				if self.quantity == 0
+					self.destroy
+				else
+					self.save
+				end
+				return (quantity_to_sell * self.current_market_price).round(2)
 			end
-			return (quantity_to_sell * self.current_market_price).round(2)
+		else
+			flash[:warning] = "You cannot sell a negative"
 		end
 	end
 

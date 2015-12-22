@@ -5,6 +5,6 @@
 <td class="stock-buy-price"><%= number_to_currency(owned_stock.buy_price) %></td>
 <td class="stock-total-value"><%= number_to_currency(owned_stock.total_value) %></td>
 
-<% if owned_stock.portfolio.user == current_user %>
-	<%= render partial: "portfolios/sell_button", object: owned_stock %>
+<% if @portfolio.user == current_user %>
+	<%= render partial: "portfolios/sell_button", object: owned_stock as: 'owned_stock' %>
 <% end %>

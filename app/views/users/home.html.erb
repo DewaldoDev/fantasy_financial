@@ -1,11 +1,20 @@
 <div class="container">
   <div class="jumbotron">
-    <h1>Welcome to Fantasy Financial!</h1>
+    <h1>Welcome to Fantasy Finance</h1>
+    <div class="row">
+      <p class="col-sm-4">Build your dream portfolio</p>
+    </div>
+    <div class="row">
+      <p class="col-sm-4 col-sm-offset-4">Compete against your friends</p>
+    </div>
+    <div class="row">
+      <p class="col-sm-4 col-sm-offset-8">Become a Market Master</p>
+    </div>
     <% if current_user %>
-    <p>Check the current status of your <%= link_to "Games.", groups_url %></p>
-    <p>Or, discover some new <%= link_to "stocks", stocks_url%> to buy.</p>
+    <p>Check the current status of your <%= link_to "groups.", groups_url %></p>
+    <p>Or, discover some new <%= link_to "stocks to buy.", stocks_url%></p>
     <% else %>
-      <p><%= link_to 'Sign In', new_user_session_url %> or <%= link_to 'Sign Up', new_user_url %> to start trading</p>
+      <p><%= link_to 'Login', new_user_session_url %> or <%= link_to 'Sign Up', new_user_url %> to start trading</p>
     <% end %>
   </div>
 </div>

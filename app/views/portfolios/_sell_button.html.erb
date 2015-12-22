@@ -1,7 +1,7 @@
 <td><%= form_tag portfolio_path(@portfolio), method: :patch, remote: true, class: 'form-inline' do %>
   <div class="form-group">
-    <%= hidden_field_tag :stock_id, owned_stock.id %>
-    <%= number_field_tag :stock_quantity, nil, max: owned_stock.quantity, class: "form-control" %>
+    <%= hidden_field_tag :stock_id, stock.id %>
+    <%= number_field_tag :stock_quantity, nil, max: stock.quantity, class: "form-control" %>
     <%= submit_tag "Sell", class: "btn btn-default" %>
   </div>
 <% end %></td>

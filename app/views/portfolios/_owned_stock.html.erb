@@ -5,11 +5,7 @@
 <td class="stock-buy-price"><%= number_to_currency(owned_stock.buy_price) %></td>
 <td class="stock-total-value"><%= number_to_currency(owned_stock.total_value) %></td>
 
-<td><%= form_tag portfolio_path(@portfolio), method: :patch, remote: true, class: 'form-inline' do %>
-  <div class="form-group">
-    <%= hidden_field_tag :stock_id, owned_stock.id %>
-    <%= number_field_tag :stock_quantity, nil, max: owned_stock.quantity, class: "form-control" %>
-    <%= submit_tag "Sell", class: "btn btn-default" %>
-  </div>
-<% end %></td>
+<% if stock.portfolio.user == current_user %>
+	<%= render partial: "portfolios/sell_button" %>
+<% end %>
 

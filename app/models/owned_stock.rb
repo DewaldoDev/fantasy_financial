@@ -12,7 +12,7 @@ class OwnedStock < ActiveRecord::Base
 	delegate :ticker, :name, :current_market_price, :current_bid_price, to: :base_stock
 
 	def must_have_sufficient_cash
-		total_cost = self.quantity||0 * self.buy_price
+		total_cost = (self.quantity.to_f||0.0) * self.buy_price
 		if portfolio.cash < total_cost
 			errors.add(:quantity, "Insufficient cash for stock purchase")
 		end
@@ -23,11 +23,7 @@ class OwnedStock < ActiveRecord::Base
 			flash[:warning] = "You cannot sell more than you own"
 		else
 			self.quantity -= quantity_to_sell
-			if self.quantity == 0
-				self.destroy
-			else
-				self.save
-			end
+			self.quantity == 0 ? self.destroy : self.save
 			return (quantity_to_sell * self.current_market_price).round(2)
 		end
 	end

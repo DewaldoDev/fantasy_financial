@@ -1,7 +1,10 @@
 class Log < ActiveRecord::Base
-		before_validation :set_trade_time, on: [:create]
+	belongs_to :user
 
-	def set_trade_time
+	before_validation :set_properties, on: [:create]
+
+	def set_properties
 		self.trade_time = Time.now
 	end
+
 end

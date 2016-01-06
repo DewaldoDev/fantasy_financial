@@ -2,6 +2,7 @@ class BaseStock < ActiveRecord::Base
 	require 'yahoo_finance'
 
 	has_many :owned_stocks
+	has_many :logs
 
 	validates :current_market_price, numericality: {greater_than: 0}
 

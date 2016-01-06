@@ -23,7 +23,7 @@ before_action :find_portfolio, only:[:show, :edit, :update, :destroy]
     if params[:stock_id] && params[:stock_quantity]
       @owned_stock = @portfolio.owned_stocks.find(params[:stock_id])
       cash = @owned_stock.sell_stock(params[:stock_quantity].to_f)
-      current_user.logs.create({action: "sell", return_amount: cash})
+      current_user.logs.create({action: "sell", return_amount: cash, base_stock_id: @owned_stock.base_stock.id})
       @portfolio.cash += cash
       @portfolio.save
     end

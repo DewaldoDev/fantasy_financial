@@ -1,2 +1,7 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).ready(function(){
+    $('.stock-ticker').hover(function(){
+        $(this).find('.stock-chart').fadeIn(500)
+    },function(){
+        $(this).find('.stock-chart').fadeOut(500)
+    })
+});

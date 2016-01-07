@@ -10,7 +10,15 @@
 			<h3 class="per-change inline-header"><%= @base_stock.change %> (<%= @base_stock.percent_change %>%)</h3>
 		</div>
 	</div>
-	<%= render "stock_chart" %>
+	<div class="row">
+		<div class="col-sm-8">
+			<%= render "stock_chart" %>
+		</div>
+		<div class="col-sm-4">
+			<%= render "related_stock" %>
+		</div>
+	</div>
+
 
 	<div>
 		<% if current_user %>

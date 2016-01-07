@@ -18,10 +18,6 @@
         <p><%= link_to 'Login', new_user_session_url %> or <%= link_to 'Sign Up', new_user_url %> to start trading</p>
       <% end %>
     </div> -->
-  </div>
-</div>
-<div class="jumbotron">
-  <div class="container">
     <div class="row jumbotron-btn-row">
       <% if current_user %>
         <%= link_to 'Groups', groups_url, class:'btn btn-default' %>
@@ -30,6 +26,23 @@
         <%= link_to 'Login', new_user_session_url, class:'btn btn-default'%>
         <%= link_to 'Sign Up', new_user_url, class:'btn btn-default'%>
       <% end %>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 movers">
+        <h2>Today's Biggest Movers</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 movers">
+        <%= render 'gainers' %>
+      </div>
+      <div class="col-sm-6 movers">
+        <%= render 'losers' %>
+      </div>
     </div>
   </div>
 </div>

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def home
+    @gainers = BaseStock.order("change DESC").limit(10)
+    @losers = BaseStock.order("change ASC").limit(10)
   end
 
   def index

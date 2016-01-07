@@ -30,6 +30,10 @@ body {
   font-family: 'Questrial', sans-serif;
 }
 
+.content {
+  margin-bottom: 25px;
+}
+
 #wrapper {
   min-height: 100%;
   height: auto;
@@ -145,6 +149,11 @@ body {
 
 #wrapper > .container img {
   max-width: 100%;
+}
+
+.movers {
+  color:  $dark-color;
+  text-align: center;
 }
 // FOOTER
 

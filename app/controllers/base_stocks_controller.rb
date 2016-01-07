@@ -17,6 +17,7 @@ class BaseStocksController < ApplicationController
   def show
     @portfolios = current_user.portfolios
     @owned_stock = OwnedStock.new
+    @related_stocks = BaseStock.where(industry: @base_stock.industry).where.not(ticker: @base_stock.ticker).order(percent_change: :desc).limit(10)
   end
 
   def new

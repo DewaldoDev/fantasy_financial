@@ -1,10 +1,11 @@
-<div class="container">
-
-	<div class="jumbotron">
+<div class="jumbotron">
+	<div class="container">
 		<h1><%= @group.name %></h1>
 		<p>Starting Amount: <%= number_to_currency(@group.starting_total) %></p>
 		<p>End Date: <%= @group.end_date.localtime.strftime("%A %B %e, %Y at %H:%M") %></p>
 	</div>
+</div>
+<div class="container">
 	<!-- if current user == group creator delete group button -->
 	<% if !@group.users.include?(current_user) %>
 		<!-- Add button to join group -->

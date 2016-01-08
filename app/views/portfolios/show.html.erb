@@ -28,7 +28,7 @@
 			<h4>Cash Holdings</h4>
 		</div>
 		<div class="col-sm-6" id="portfolio-cash">
-			<p><%=number_to_currency(@portfolio.cash)%></p>
+			<h4><%=number_to_currency(@portfolio.cash)%></h4>
 		</div>
 	</div>
 	<hr class="portfolio-hr">
@@ -37,7 +37,7 @@
 			<h4>Total</h4>
 		</div>
 		<div class="col-sm-6" id="portfolio-total">
-			<p><%= number_to_currency(@portfolio.current_value)%></p>
+			<h4><%= number_to_currency(@portfolio.current_value)%></h4>
 		</div>
 	</div>
 </div>

@@ -19,3 +19,13 @@ body > div {
 	display:none;
 	position: absolute;
 }
+
+#portfolio-cash p, #portfolio-total p {
+  float: right;
+  margin-bottom: 0;
+}
+
+.portfolio-hr {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}

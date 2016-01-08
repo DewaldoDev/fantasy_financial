@@ -2,7 +2,7 @@
 <% @gainers.each do |stock| %>
 	<%= link_to stock_path(stock), class: "list-group-item" do %>
 		<div class="row">
-			<span class="col-xs-4"><%= stock.name %> (<%= stock.ticker %>)</span> <span class="col-xs-4 per-change"><%= stock.change %></span> <span class="col-xs-4"><%= number_to_currency(stock.current_market_price) %></span>
+			<span class="col-xs-6"><%= stock.name %> (<%= stock.ticker %>)</span> <span class="col-xs-3 per-change"><%= stock.change %></span> <span class="col-xs-3"><%= number_to_currency(stock.current_market_price) %></span>
 		</div>
 	<% end %>
 <% end %>

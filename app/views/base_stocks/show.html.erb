@@ -35,7 +35,7 @@
 					</div>
 					<div class="form-group col-sm-6">
 						<%= f.label :name, "Portfolio:" %>
-						<%= f.collection_select(:portfolio_id, @portfolios, :id, :name, {}, {:class => "form-control"}) %>
+						<%= f.collection_select(:portfolio_id, @portfolios, :id, :buy_display, {}, {:class => "form-control"}) %>
 					</div>
 				</div>
 					<%= f.submit 'Buy', :class => 'nav-button btn btn-default' %>

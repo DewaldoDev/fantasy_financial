@@ -1,4 +1,6 @@
 class Portfolio < ActiveRecord::Base
+	# needed to use number_to_currency
+	include ActionView::Helpers::NumberHelper
 	belongs_to :group
 	belongs_to :user
 	has_many :owned_stocks
@@ -27,5 +29,10 @@ class Portfolio < ActiveRecord::Base
 			total_value += stock.quantity * stock.current_market_price
 		end
 		total_value
+	end
+
+	def buy_display
+		display_cash = number_to_currency(cash)
+		"#{name} #{display_cash}"
 	end
 end

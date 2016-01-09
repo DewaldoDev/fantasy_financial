@@ -6,6 +6,7 @@ before_action :find_portfolio, only:[:show, :edit, :update, :destroy]
   end
 
   def show
+    @portfolio.calculate_value
     @owned_stocks = @portfolio.owned_stocks.all
     @equity = 0
     @owned_stocks.each do |stock|

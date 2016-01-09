@@ -10,6 +10,9 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group.portfolios.each do |portfolio|
+      portfolio.calculate_value
+    end
   end
 
   def new

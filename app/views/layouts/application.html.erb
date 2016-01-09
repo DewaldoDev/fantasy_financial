@@ -36,7 +36,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolios <span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <% current_user.portfolios.each do |portfolio| %>
-                <li><a href=<%=portfolio_url(portfolio)%>> <%= portfolio.group.name %> </a></li>
+                <li><a href=<%=portfolio_url(portfolio)%>> <%= current_user.username %>'s Portfolio in <%= portfolio.group.name %> </a></li>
               <% end %>
             </ul>
           </li>

@@ -25,19 +25,28 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6">
-			<h4>Cash Holdings</h4>
+			<h5>Total Equity</h5>
 		</div>
-		<div class="col-sm-6" id="portfolio-cash">
-			<h4><%=number_to_currency(@portfolio.cash)%></h4>
+		<div class="col-sm-6" id="portfolio-equity">
+			<h5><%= number_to_currency(@equity) %></h5>
 		</div>
 	</div>
 	<hr class="portfolio-hr">
 	<div class="row">
 		<div class="col-sm-6">
-			<h4>Total</h4>
+			<h5>Cash Holdings</h5>
+		</div>
+		<div class="col-sm-6" id="portfolio-cash">
+			<h5><%=number_to_currency(@portfolio.cash)%></h5>
+		</div>
+	</div>
+	<hr class="portfolio-hr">
+	<div class="row">
+		<div class="col-sm-6">
+			<h5>Total</h5>
 		</div>
 		<div class="col-sm-6" id="portfolio-total">
-			<h4><%= number_to_currency(@portfolio.current_value)%></h4>
+			<h5><%= number_to_currency(@portfolio.current_value)%></h5>
 		</div>
 	</div>
 </div>

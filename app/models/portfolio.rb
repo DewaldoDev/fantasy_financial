@@ -33,6 +33,6 @@ class Portfolio < ActiveRecord::Base
 
 	def buy_display
 		display_cash = number_to_currency(cash)
-		"#{name} #{display_cash}"
+		"#{name} | Cash Remaining #{display_cash}"
 	end
 end

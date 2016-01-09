@@ -11,6 +11,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user.portfolios.each do |portfolio|
+      portfolio.calculate_value
+    end
   end
 
   def new

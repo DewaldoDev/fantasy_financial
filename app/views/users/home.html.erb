@@ -10,14 +10,6 @@
     <div class="row">
       <p class="col-sm-4 col-sm-offset-8">Become a Market Master</p>
     </div>
-    <!-- <div class="row">
-      <% if current_user %>
-      <p>Check the current status of your <%= link_to "groups.", groups_url %></p>
-      <p>Or, discover some new <%= link_to "stocks to buy.", stocks_url%></p>
-      <% else %>
-        <p><%= link_to 'Login', new_user_session_url %> or <%= link_to 'Sign Up', new_user_url %> to start trading</p>
-      <% end %>
-    </div> -->
     <div class="row jumbotron-btn-row">
       <h4>Get Started</h4>
     </div>
@@ -25,6 +17,7 @@
       <% if current_user %>
         <%= link_to 'Groups', groups_url, class:'btn btn-default' %>
         <%= link_to 'Stocks', stocks_url, class:'btn btn-default' %>
+        <%= link_to 'Profile', user_url(current_user), class:'btn btn-default' %>
       <% else %>
         <%= link_to 'Login', new_user_session_url, class:'btn btn-default'%>
         <%= link_to 'Sign Up', new_user_url, class:'btn btn-default'%>

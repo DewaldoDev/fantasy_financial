@@ -22,10 +22,9 @@ class OwnedStock < ActiveRecord::Base
 		if quantity_to_sell <= 0 || self.quantity < quantity_to_sell
 				flash[:warning] = "Cannot purchase stocks at this amount"
 		else
-			return_amount = (quantity_to_sell * self.current_market_price).round(2)
 			self.quantity -= quantity_to_sell
 			self.quantity == 0 ? self.destroy : self.save
-			return return_amount
+			return (quantity_to_sell * self.current_market_price).round(2)
 		end
 	end
 

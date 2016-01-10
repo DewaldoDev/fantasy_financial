@@ -6,20 +6,49 @@
 	</div>
 </div>
 <div class="container">
-	<!-- if current user == group creator delete group button -->
-	<% if !@group.users.include?(current_user) %>
-		<!-- Add button to join group -->
+	<div class="row">
+		<div class="col-sm-6">
+			<!-- if current user == group creator delete group button -->
+			<% if !@group.users.include?(current_user) %>
+				<!-- Add button to join group -->
 
-	<%= link_to "Join This Group", "/groups/#{@group.id}/participation", method: :post,  class: "btn btn-default" %>
-	<% end %>
-	<div class="list-group">
-		<h2>Players:</h2>
-		<% @group.users.each do |user| %>
-		  <%= link_to portfolio_path(user.find_portfolio(@group.id)), class: "list-group-item" do %>
-		  	<p> <%= user.username %> |
-				Portfolio net worth: <%= number_to_currency(user.portfolios.where(group_id: @group.id).take.current_value) %></p>
+			<%= link_to "Join This Group", "/groups/#{@group.id}/participation", method: :post,  class: "btn btn-default" %>
+			<% end %>
+			<div class="list-group">
+				<h2>Players:</h2>
+				<% @group.users.each do |user| %>
+					<%= link_to portfolio_path(user.find_portfolio(@group.id)), class: "list-group-item" do %>
+						<p> <%= user.username %> |
+						Portfolio net worth: <%= number_to_currency(user.portfolios.where(group_id: @group.id).take.current_value) %></p>
+						<% end %>
 				<% end %>
-		<% end %>
+			</div>
+		</div>
 
+		<div class="col-sm-6">
+			<h2>Group Logs</h2>
+			<div class="group-logs">
+				<% @logs.each do |log| %>
+					<% log.each do |log| %>
+						<div class="list-group-item">
+							<div class="row">
+								<div class="col-sm-3">
+									<%= log.user.username %>
+								</div>
+								<div class="col-sm-3">
+									<%= log.action %>
+								</div>
+								<div class="col-sm-3">
+									<%= number_to_currency(log.return_amount) %>
+								</div>
+								<div class="col-sm-3">
+									<%= log.base_stock.name %>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
 	</div>
 </div>

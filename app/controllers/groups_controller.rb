@@ -13,6 +13,10 @@ class GroupsController < ApplicationController
     @group.portfolios.each do |portfolio|
       portfolio.calculate_value
     end
+    @logs = []
+    @group.users.each do |user|
+      @logs << user.logs
+    end
   end
 
   def new

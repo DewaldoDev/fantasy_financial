@@ -20,9 +20,10 @@ body > div {
 	position: absolute;
 }
 
-#portfolio-cash {
+#portfolio-cash, #portfolio-total, #portfolio-equity {
   text-align: right;
 }
+
 #portfolio-cash h5, #portfolio-total h5, #portfolio-equity h5 {
   float: right;
   margin-bottom: 0;

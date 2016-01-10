@@ -5,3 +5,5 @@ if (<%= @owned_stock.quantity %> > 0){
 }
 
 $('#portfolio-cash').html('<%= number_to_currency(@portfolio.cash) %>');
+$('#portfolio-equity').html('<%= number_to_currency(@portfolio.calculate_equity) %>');
+$('#portfolio-total').html('<%= number_to_currency(@portfolio.current_value) %>');

@@ -13,6 +13,14 @@ class Portfolio < ActiveRecord::Base
 		self.group.name
 	end
 
+	def calculate_equity
+		equity = 0
+		self.owned_stocks.each do |stock|
+      equity += stock.total_value
+    end
+    equity
+	end
+
 	def calculate_value
 		if self.owned_stocks.present?
 			self.current_value = self.stocks_value + self.cash

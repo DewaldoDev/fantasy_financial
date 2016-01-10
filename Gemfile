@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
-
+ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
@@ -37,7 +37,7 @@ gem 'validates_timeliness'
 gem 'whenever'
 
 #pagination
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -48,6 +48,7 @@ gem 'will_paginate'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -59,3 +60,5 @@ group :development do
 
   gem 'pry-rails'
 end
+
+gem 'rails_12factor', group: :production

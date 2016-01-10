@@ -1,13 +1,15 @@
-<div class="container">
-	<div class="jumbotron">
+<div class="jumbotron">
+	<div class="container">
 		<h1><%=@user.username%></h1>
 		<p><%=@user.first_name%> <%=@user.last_name %></p>
 	</div>
+</div>
+<div class="container">
 	<div class="list-group">
 		<h2>Your current games:</h2>
 		<% if current_user.groups.any? %>
-			<% @user.groups.each do |group| %>
-			<a class="list-group-item" href=<%=group_url(group)%> ><%=group.name%> | Your Portfolio Net Worth:<%= number_to_currency(current_user.portfolios.where(group_id: group.id).take.current_value) %> </a>
+			<% @user.portfolios.each do |portfolio| %>
+			<a class="list-group-item" href=<%=portfolio_url(portfolio)%> ><%=portfolio.group.name%> | Your Portfolio Net Worth: <%= number_to_currency(portfolio.current_value) %> </a>
 			<% end %>
 		<% else %>
 			<p><%= link_to "Find", groups_url %> or <%= link_to "Start", new_group_url %> to start trading.</p>

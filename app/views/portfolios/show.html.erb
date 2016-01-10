@@ -1,17 +1,5 @@
 <div class="container">
 	<h1>	<%= @portfolio.user.username%>'s Portfolio in: <%= @portfolio.group.name%> </h1>
-
-	<div class="table-responsive">
-		<table class="table">
-			<thead>
-     		<tr>
-        	<th>Cash Holdings</th>
-       		<th id="portfolio-cash"><%=number_to_currency(@portfolio.cash)%></th>
-      	</tr>
-    	</thead>
-		</table>
-	</div>
-
 	<div class="table-responsive">
 		<table class="table">
 			<thead>
@@ -19,9 +7,10 @@
           <th>Ticker</th>
           <th>Company Name</th>
           <th>Quantity Owned</th>
-          <th>Current Market Price</th>
           <th>Purchased Price</th>
-         	<th>Current Value</th>
+					<th>Current Market Price</th>
+					<th>Change</th>
+					<th>Current Value</th>
           <th>Sell Stock</th>
         </tr>
     </thead>
@@ -33,5 +22,31 @@
         <% end %>
        </tbody>
 		</table>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h5>Total Equity</h5>
+		</div>
+		<div class="col-sm-6" id="portfolio-equity">
+			<h5><%= number_to_currency(@equity) %></h5>
+		</div>
+	</div>
+	<hr class="portfolio-hr">
+	<div class="row">
+		<div class="col-sm-6">
+			<h5>Cash Holdings</h5>
+		</div>
+		<div class="col-sm-6" id="portfolio-cash">
+			<h5><%=number_to_currency(@portfolio.cash)%></h5>
+		</div>
+	</div>
+	<hr class="portfolio-hr">
+	<div class="row">
+		<div class="col-sm-6">
+			<h5>Total</h5>
+		</div>
+		<div class="col-sm-6" id="portfolio-total">
+			<h5><%= number_to_currency(@portfolio.current_value)%></h5>
+		</div>
 	</div>
 </div>

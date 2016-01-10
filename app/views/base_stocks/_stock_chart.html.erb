@@ -1,0 +1,19 @@
+<ul class="nav nav-tabs">
+	<li class="active"><a data-toggle="tab" href="#daily-chart">Daily</a></li>
+	<li><a data-toggle="tab" href="#monthly-chart">Monthly</a></li>
+	<li><a data-toggle="tab" href="#yearly-chart">Yearly</a></li>
+</ul>
+
+<div class="tab-content">
+	<div id="daily-chart" class="tab-pane fade in active">
+			<img id="stock-chart" src="http://chart.finance.yahoo.com/z?s=<%= @base_stock.ticker %>&t=1d&q=l&l=on&z=l">
+	</div>
+
+	<div id="monthly-chart" class="tab-pane fade">
+			<img id="stock-chart" src="http://chart.finance.yahoo.com/z?s=<%= @base_stock.ticker %>&t=1m&q=l&l=on&z=l">
+	</div>
+
+	<div id="yearly-chart" class="tab-pane fade">
+			<img id="stock-chart" src="http://chart.finance.yahoo.com/z?s=<%= @base_stock.ticker %>&t=1y&q=l&l=on&z=l">
+	</div>
+</div>

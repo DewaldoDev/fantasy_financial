@@ -17,6 +17,7 @@ class OwnedStocksController < ApplicationController
     @owned_stock.base_stock = BaseStock.find(params[:base_stock_id])
 
     if @owned_stock.save
+      current_user.logs.create({action: "buy", return_amount: @owned_stock.total_value, base_stock_id: @owned_stock.base_stock.id})
       flash[:notice] = "Your order has been executed"
       redirect_to :back
     else

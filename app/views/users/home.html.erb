@@ -1,11 +1,44 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to Fantasy Financial!</h1>
-    <% if current_user %>
-    <p>Check the current status of your <%= link_to "Games.", groups_url %></p>
-    <p>Or, discover some new <%= link_to "stocks", stocks_url%> to buy.</p>
-    <% else %>
-      <p><%= link_to 'Sign In', new_user_session_url %> or <%= link_to 'Sign Up', new_user_url %> to start trading</p>
-    <% end %>
+<div class="jumbotron">
+  <div class="container">
+    <h1>Welcome to Fantasy Finance</h1>
+    <div class="row">
+      <p class="col-sm-4">Build your dream portfolio</p>
+    </div>
+    <div class="row">
+      <p class="col-sm-4 col-sm-offset-4">Compete against your friends</p>
+    </div>
+    <div class="row">
+      <p class="col-sm-4 col-sm-offset-8">Become a Market Master</p>
+    </div>
+    <div class="row jumbotron-btn-row">
+      <h4>Get Started</h4>
+    </div>
+    <div class="row jumbotron-btn-row">
+      <% if current_user %>
+        <%= link_to 'Groups', groups_url, class:'btn btn-default' %>
+        <%= link_to 'Stocks', stocks_url, class:'btn btn-default' %>
+        <%= link_to 'Profile', user_url(current_user), class:'btn btn-default' %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_url, class:'btn btn-default'%>
+        <%= link_to 'Sign Up', new_user_url, class:'btn btn-default'%>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 movers">
+        <h2>Today's Biggest Movers</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 movers">
+        <%= render 'gainers' %>
+      </div>
+      <div class="col-sm-6 movers">
+        <%= render 'losers' %>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,3 +1,34 @@
 // Place all the styles related to the Portfolios controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$jumbotron-color: #505050;
+$text-color: white;
+$navbar-color: #6DBB71;
+$body-color: #CFD8DC;
+
+body > div {
+  color: $jumbotron-color;
+}
+
+.stock-ticker {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.stock-chart {
+	display:none;
+	position: absolute;
+}
+
+#portfolio-cash {
+  text-align: right;
+}
+#portfolio-cash h5, #portfolio-total h5, #portfolio-equity h5 {
+  float: right;
+  margin-bottom: 0;
+}
+
+.portfolio-hr {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}

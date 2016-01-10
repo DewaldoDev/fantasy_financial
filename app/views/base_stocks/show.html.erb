@@ -1,28 +1,47 @@
-<div class="container">
-	<h1><%= @base_stock.name %></h1>
-	<img src="http://chart.finance.yahoo.com/z?s=<%= @base_stock.ticker %>&t=1d&q=l&l=on&z=l">
-	<div class="stock-show">
-		<p>Ticker: <%= @base_stock.ticker %></p>
-		<p>Market Price: <%= @base_stock.current_market_price %></p>
-		<p>Bid Price: <%= @base_stock.current_bid_price %></p>
+<div class="container stock-show-wrapper">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="inline-header"><%= @base_stock.name %> </h1> <h3 class="inline-header"> (<%= @base_stock.ticker %>)</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="inline-header"><%=number_to_currency(@base_stock.current_market_price)%>  </h2>
+			<h3 class="per-change inline-header"><%= @base_stock.change %> (<%= @base_stock.percent_change %>%)</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<%= render "stock_chart" %>
+		</div>
+		<div class="col-sm-4">
+			<%= render "related_stock" %>
+		</div>
 	</div>
 
+
 	<div>
-		<%= form_for @owned_stock, url: {action: "create", controller: "owned_stocks"} do |f| %>
-			<div class="form-group">
-				<%= hidden_field_tag(:base_stock_id, @base_stock.id) %>
-				<%= f.hidden_field(:buy_price, :value => @base_stock.current_market_price) %>
-			</div>
-			<%= f.label :quantity, "Buy Stocks:" %>
-			<div class="row">
-				<div class="form-group col-sm-6">
-					<%= f.number_field :quantity, :value => params[:quantity], class: "form-control" %>
+		<% if current_user %>
+			<%= form_for @owned_stock, url: {action: "create", controller: "owned_stocks"} do |f| %>
+				<div class="form-group">
+					<%= hidden_field_tag(:base_stock_id, @base_stock.id) %>
+					<%= f.hidden_field(:buy_price, :value => @base_stock.current_market_price) %>
 				</div>
-				<div class="form-group col-sm-6">
-					<%= f.collection_select(:portfolio_id, @portfolios, :id, :name, {}, {:class => "form-control"}) %>
+				<h3>Buy Stocks</h3>
+				<div class="row">
+					<div class="form-group col-sm-6">
+						<%= f.label :quantity, "Quantity:" %>
+						<%= f.number_field :quantity, :value => params[:quantity], class: "form-control" %>
+					</div>
+					<div class="form-group col-sm-6">
+						<%= f.label :name, "Portfolio:" %>
+						<%= f.collection_select(:portfolio_id, @portfolios, :id, :buy_display, {}, {:class => "form-control"}) %>
+					</div>
 				</div>
-			</div>
-				<%= f.submit 'Buy', :class => 'nav-button btn btn-default' %>
+					<%= f.submit 'Buy', :class => 'nav-button btn btn-default' %>
+			<% end %>
+		<% else %>
+			<h5>Sign in to start trading</h5>
 		<% end %>
 	</div>
 </div>

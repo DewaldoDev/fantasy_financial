@@ -11,15 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215204704) do
+ActiveRecord::Schema.define(version: 20160106190708) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "base_stocks", force: :cascade do |t|
     t.string   "ticker"
     t.string   "name"
     t.float    "current_market_price"
-    t.float    "current_bid_price"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.float    "change"
+    t.float    "percent_change"
+    t.string   "industry"
+    t.string   "sector"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -39,6 +45,7 @@ ActiveRecord::Schema.define(version: 20151215204704) do
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "base_stock_id"
   end
 
   create_table "owned_stocks", force: :cascade do |t|
@@ -84,8 +91,8 @@ ActiveRecord::Schema.define(version: 20151215204704) do
     t.datetime "reset_password_email_sent_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
 end

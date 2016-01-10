@@ -1,6 +1,9 @@
 desc "Grab stock price data using Yahoo Finance API"
 task update_stock_prices: [:environment] do
 	BaseStock.update_prices
+	Portfolio.all.each do |i|
+		i.calculate_value
+	end
 end
 
 # Start a new Cron task

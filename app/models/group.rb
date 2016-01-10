@@ -12,4 +12,8 @@ class Group < ActiveRecord::Base
 	def set_start_date
 		self.start_date = Time.now
 	end
+
+	def is_full?
+		self.users.size >= self.max_size
+	end
 end

@@ -1,5 +1,5 @@
 
-BaseStock.seed_stocks_from_file("./public/tickersNASDAQ.txt")
+BaseStock.seed_stocks_from_file("./public/tickersNASDAQ-copy.txt")
 
 User.create(
 	username: "kmichaelkills",
@@ -19,14 +19,6 @@ User.create(
 	last_name: "Smith",
 	email: "theonetruemorty@gmail.com")
 
-squanch_group = Group.create(
-	name: "The Squanchers",
-	start_date: Time.now,
-	end_date: Time.now.end_of_day.advance(months: 1),
-	starting_total: 10000,
-	max_size: 3
-	)
-
 User.all.each do |user|
 	user.participations.create(
 		group_id: squanch_group.id)
@@ -36,6 +28,3 @@ User.all.each do |user|
 		cash: squanch_group.starting_total)
 
 end
-
-
-

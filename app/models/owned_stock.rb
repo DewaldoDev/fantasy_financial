@@ -9,7 +9,7 @@ class OwnedStock < ActiveRecord::Base
 	before_validation :set_properties, on: [:create]
 	after_save :update_portfolio
 
-	delegate :ticker, :name, :current_market_price, :current_bid_price, to: :base_stock
+	delegate :ticker, :name, :current_market_price, :change, :percent_change, :industry, :sector, to: :base_stock
 
 	def must_have_sufficient_cash
 		total_cost = (self.quantity.to_f||0.0) * self.buy_price
@@ -19,22 +19,24 @@ class OwnedStock < ActiveRecord::Base
 	end
 
 	def sell_stock(quantity_to_sell)
-		if self.quantity < quantity_to_sell
-			flash[:warning] = "You cannot sell more than you own"
+		if quantity_to_sell <= 0 || self.quantity < quantity_to_sell
+				flash[:warning] = "Cannot purchase stocks at this amount"
 		else
+			return_amount = (quantity_to_sell * self.current_market_price).round(2)
 			self.quantity -= quantity_to_sell
 			self.quantity == 0 ? self.destroy : self.save
-			return (quantity_to_sell * self.current_market_price).round(2)
+			return return_amount
 		end
 	end
 
 	def update_portfolio
-		self.portfolio.cash -= self.current_market_price * self.quantity
+		self.portfolio.cash -= (self.quantity * self.buy_price)
+		self.portfolio.save
 		self.portfolio.calculate_value
 	end
 
 	def total_value
-		self.current_market_price * self.quantity
+		self.current_market_price * self.quantity.to_f
 	end
 
 	def set_properties

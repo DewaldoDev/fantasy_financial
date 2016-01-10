@@ -16,6 +16,120 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$dark-color: #282828;
+$text-color: white;
+$green-color: #1aac9a;
+
+
+// GlOBAL
+
+html,
+body {
+  color: white !important;
+  height: 100%;
+  font-family: 'Questrial', sans-serif;
+}
+
+.content {
+  margin-bottom: 45px;
+}
+
+#wrapper {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+}
+
+// NAVBAR
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar-brand {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 25px;
+  padding: 13px 15px;
+}
+
+.navbar, .navbar-default {
+  background-color: $dark-color;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+}
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+  color: $green-color;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {
+  color: $text-color;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus, .dropdown-menu > li > a, .dropdown-menu {
+  background-color: $dark-color;
+  color: $text-color
+}
+
+ .dropdown-menu > li > a:hover {
+   background-color: $dark-color;
+   color: $text-color;
+ }
+
+// CONTENT
+.align-right {
+  text-align: right;
+}
+.align-left {
+  text-align: left;
+}
+.jumbotron {
+  background-color: $dark-color;
+  color: $green-color;
+}
+
+.jumbotron .btn {
+  border-radius: 0;
+  background-color: white;
+  color: $green-color;
+  border-color: $green-color;
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: all .2s ease;
+}
+
+.jumbotron .btn:hover {
+  border-radius: 0;
+  background-color: $green-color;
+  color: white;
+  border-color: white;
+}
+
+#wrapper > div > div > .jumbotron-btn-row {
+  text-align: center;
+}
+
+.jumbotron > p > a {
+  color: $text-color;
+}
+
+.btn {
+  background-color: $dark-color;
+  color: white;
+  border-color: $dark-color;
+  border-radius: 0;
+}
+
+.btn:hover {
+  background-color: $dark-color;
+  color: $green-color;
+  border-color: $green-color;
+}
+
 .index-price {
   float: right;
   padding-right: 15px;
@@ -31,4 +145,22 @@
 
 .heading {
   font-weight: bold;
+}
+
+#wrapper > .container img {
+  max-width: 100%;
+}
+
+.movers {
+  color:  $dark-color;
+  text-align: center;
+}
+// FOOTER
+
+#footer {
+  height: 60px;
+  background-color: $dark-color;
+  border: white solid 1px;
+  line-height: 60px;
+  color: $green-color;
 }

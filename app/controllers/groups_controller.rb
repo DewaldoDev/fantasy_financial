@@ -10,6 +10,9 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group.portfolios.each do |portfolio|
+      portfolio.calculate_value
+    end
   end
 
   def new
@@ -17,9 +20,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @participation = current_user.participations.create
+    @participation = current_user.participations.new
     @group = Group.new(group_params)
     @group.participations << @participation
+    @participation.save
 
     if @group.save
       flash[:notice] = "Your group has been created"
@@ -41,8 +45,14 @@ class GroupsController < ApplicationController
 
   def join
     @user = current_user
-    @user.groups << @group
-    redirect_to group_url(@group)
+
+    unless @group.is_full?
+      @user.groups << @group
+      redirect_to group_url(@group)
+    else
+      flash[:warning] = "Sorry, group has a maximum of #{@group.max_size} users."
+      redirect_to :back
+    end
   end
 
   private

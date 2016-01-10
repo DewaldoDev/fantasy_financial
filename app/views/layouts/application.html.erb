@@ -5,6 +5,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width" />
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -16,8 +19,9 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 	</button>
+  <a href="/" class="navbar-brand">Fantasy Finance</a>
 	</div>
-	<a href="/" class="navbar-brand">Fantasy Financial</a>
+
 
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -31,8 +35,8 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Portfolios <span class="caret"></span></a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <% current_user.groups.each do |group| %>
-                <li><a href=<%=group_url(group)%>> <%= group.name %> </a></li>
+              <% current_user.portfolios.each do |portfolio| %>
+                <li><a href=<%=portfolio_url(portfolio)%>> <%= current_user.username %>'s Portfolio in <%= portfolio.group.name %> </a></li>
               <% end %>
             </ul>
           </li>
@@ -54,7 +58,15 @@
 		<div class="alert alert-warning"><%= flash[:warning] %></div>
 	<% end %>
 
-<%= yield %>
+<div id="wrapper">
+  <%= yield %>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <div class="col-sm-4">&#169; Fantasy Finance</div>
+  </div>
+</div>
 
 </body>
 </html>

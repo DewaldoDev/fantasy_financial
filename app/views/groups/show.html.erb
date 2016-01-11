@@ -29,26 +29,24 @@
 			<h2>Group Logs</h2>
 			<div class="group-logs">
 				<% @logs.each do |log| %>
-					<% log.each do |log| %>
-						<div class="list-group-item">
-							<div class="row">
-								<div class="col-sm-3">
-									<%= log.user.username %>
-								</div>
-								<div class="col-sm-3">
-									<%= log.action %>
-								</div>
-								<div class="col-sm-3">
-									<%= number_to_currency(log.return_amount) %>
-								</div>
-								<% if log.base_stock.present? %>
-									<div class="col-sm-3">
-										<%= log.base_stock.name %>
-									</div>
-								<% end %>
+					<div class="list-group-item">
+						<div class="row">
+							<div class="col-sm-3">
+								<%= log.user.username %>
 							</div>
+							<div class="col-sm-3">
+								<%= log.action %>
+							</div>
+							<div class="col-sm-3">
+								<%= number_to_currency(log.return_amount) %>
+							</div>
+							<% if log.base_stock.present? %>
+								<div class="col-sm-3">
+									<%= log.base_stock.name %>
+								</div>
+							<% end %>
 						</div>
-					<% end %>
+					</div>
 				<% end %>
 			</div>
 		</div>

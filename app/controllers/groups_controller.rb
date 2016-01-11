@@ -10,13 +10,10 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @logs = @group.logs
+    @logs = @group.logs.reverse
     @group.portfolios.each do |portfolio|
       portfolio.calculate_value
     end
-    # @group.users.each do |user|
-    #   @logs << user.logs
-    # end
   end
 
   def new

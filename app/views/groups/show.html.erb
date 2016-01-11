@@ -41,9 +41,11 @@
 								<div class="col-sm-3">
 									<%= number_to_currency(log.return_amount) %>
 								</div>
-								<div class="col-sm-3">
-									<%= log.base_stock.name %>
-								</div>
+								<% if log.base_stock.present? %>
+									<div class="col-sm-3">
+										<%= log.base_stock.name %>
+									</div>
+								<% end %>
 							</div>
 						</div>
 					<% end %>

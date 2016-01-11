@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 	root to: "users#home"
 
   resources :portfolios
-
+	get '/stack', to: 'users#stack'
   resources :users
   resources :groups
   post "/groups/:id/participation", to: "groups#join"

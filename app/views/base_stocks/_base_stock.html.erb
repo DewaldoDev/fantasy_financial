@@ -1,14 +1,14 @@
 <div class="heading">
 		<span class="list-group-item">
 			<div class="row">
-				<span class="col-xs-3">Ticker</span><span class="col-xs-3">Name</span><span class="col-xs-3">% Change</span><span class="col-xs-3">Current Market Price</span>
+				<span class="col-xs-3">Ticker</span><span class="col-xs-3">Name</span><span class="col-xs-3">Change</span><span class="col-xs-3">Current Market Price</span>
 			</div>
 		</span>
 </div>
 <% @base_stocks.each do |base_stock| %>
 	<%= link_to stock_path(base_stock), class: "list-group-item" do %>
 		<div class="row">
-			<span class="col-xs-3"><%= base_stock.ticker %></span><span class="col-xs-3"><%= base_stock.name %></span> <span class="col-xs-3 per-change"><%= base_stock.change %></span> <span class="col-xs-3"><%= number_to_currency(base_stock.current_market_price) %></span>
+			<span class="col-xs-3"><%= base_stock.ticker %></span><span class="col-xs-3"><%= base_stock.name %></span> <span class="col-xs-3 per-change"><%= base_stock.change %>(<%= (base_stock.percent_change*100).round(2) %>%)</span> <span class="col-xs-3"><%= number_to_currency(base_stock.current_market_price) %></span>
 		</div>
 	<% end %>
 <% end %>

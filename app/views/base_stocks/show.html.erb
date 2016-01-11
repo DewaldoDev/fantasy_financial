@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 class="inline-header"><%=number_to_currency(@base_stock.current_market_price)%>  </h2>
-			<h3 class="per-change inline-header"><%= @base_stock.change %> (<%= @base_stock.percent_change %>%)</h3>
+			<h3 class="per-change inline-header"><%= @base_stock.change %> (<%= (@base_stock.percent_change*100).round(2) %>%)</h3>
 		</div>
 	</div>
 	<div class="row">

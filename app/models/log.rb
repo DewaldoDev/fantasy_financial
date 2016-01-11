@@ -1,6 +1,7 @@
 class Log < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :base_stock
+	belongs_to :group
 
 	before_validation :set_properties, on: [:create]
 

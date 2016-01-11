@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160106190708) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "base_stock_id"
+    t.integer  "group_id"
   end
 
   create_table "owned_stocks", force: :cascade do |t|

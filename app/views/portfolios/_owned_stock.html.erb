@@ -2,7 +2,7 @@
 	<%= owned_stock.ticker %>
 	<img class="stock-chart" src="http://chart.finance.yahoo.com/z?s=<%= owned_stock.ticker %>&t=1d&q=l&l=on&z=s">
 </td>
-<td class="stock-name"><%= owned_stock.name %></td>
+<td class="stock-name"><%= link_to owned_stock.name, stock_url(owned_stock.base_stock_id) %></td>
 <td class="stock-quantity"><%= owned_stock.quantity%></td>
 <td class="stock-buy-price"><%= number_to_currency(owned_stock.buy_price) %></td>
 <td class="stock-current-price"><%= number_to_currency(owned_stock.current_market_price) %></td>

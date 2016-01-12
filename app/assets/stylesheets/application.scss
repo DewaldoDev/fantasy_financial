@@ -168,3 +168,10 @@ body {
   color: $green-color;
   margin-top: 25px;
 }
+
+.tech-stack-link {
+  text-align: right;
+  a {
+    color: $green-color;
+  }
+}

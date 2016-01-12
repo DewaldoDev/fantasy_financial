@@ -7,6 +7,9 @@ class UsersController < ApplicationController
     @losers = BaseStock.order("percent_change ASC").limit(10)
   end
 
+  def stack
+  end
+
   def index
   end
 

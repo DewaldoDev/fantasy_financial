@@ -9,7 +9,42 @@
   text-align: center;
 }
 
-#stack-wrapper > .row img {
-  max-width: 200px !important;
+#stack-wrapper > .row .tech-img {
+  max-width: 500px !important;
+  height: 200px;
+  margin-right: 20px;
+  margin-left: 20px;
 
+}
+
+.tech-header {
+  text-align: center;
+}
+
+.tech-second .tech-img-2{
+  max-width: 300px !important;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.tech-second .sass {
+  height: 200px;
+  margin-left: 70px;
+}
+
+.tech-second {
+  text-align: center;
+}
+
+.gems p {
+  display: inline-block;
+}
+
+.gems img{
+  width: 20px;
+  margin-right: 5px;
+}
+
+.gems {
+  text-align: left;
 }
